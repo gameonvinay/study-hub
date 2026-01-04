@@ -6,6 +6,7 @@ import NotFoundView from '../views/NotFoundView.vue'
 import MCQQuiz from '../components/MCQQuiz.vue'
 import Refresher from '../components/Refresher.vue'
 import TheoryView from '../components/TheoryView.vue'
+import MindmapView from '../views/MindmapView.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -35,6 +36,12 @@ const routes: RouteRecordRaw[] = [
     path: '/:subjectId/theory',
     name: 'theory-subject',
     component: TheoryView,
+    props: true
+  },
+  {
+    path: '/:subjectId/mindmap',
+    name: 'mindmap-view',
+    component: MindmapView,
     props: true
   },
   {

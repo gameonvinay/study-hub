@@ -1,0 +1,7 @@
+import type { TheoryQuestion } from '../../../types'
+
+export const theoryQuestion24: TheoryQuestion = {
+  "id": 24,
+  "title": "Explain Chatbots and Their Types",
+  "content": "## What are Chatbots?\n\n**Chatbots** are AI-powered programs that simulate human conversation through text or voice interactions.\n\n```\nChatbot Interaction:\n\n┌───────────┐     ┌───────────┐     ┌───────────┐\n│   User    │────▶│  Chatbot  │────▶│  Response │\n│   Query   │     │  Engine   │     │           │\n└───────────┘     └───────────┘     └───────────┘\n    \"What's         NLP +            \"The weather\n    the weather?\"   Intent           is sunny!\"\n                    Recognition\n```\n\n---\n\n## Types of Chatbots\n\n### 1. Rule-Based Chatbots\n\n- Follow predefined rules\n- Pattern matching\n- Limited responses\n- Simple implementation\n\n### 2. AI-Powered Chatbots\n\n- Use NLP and ML\n- Learn from conversations\n- Context-aware\n- More natural\n\n### 3. Hybrid Chatbots\n\n- Combine rules and AI\n- Best of both approaches\n\n---\n\n## Chatbot Components\n\n| Component | Function |\n|-----------|----------|\n| NLU | Understand intent |\n| Dialog Manager | Manage conversation |\n| NLG | Generate responses |\n| Knowledge Base | Store information |\n\n---\n\n## Applications\n\n| Industry | Use Case |\n|----------|----------|\n| Customer Service | Support queries |\n| E-commerce | Product assistance |\n| Healthcare | Symptom checking |\n| Banking | Account inquiries |\n| HR | Employee FAQs |"
+}

@@ -41,6 +41,15 @@ const contentTypes = computed(() => {
       icon: '📖'
     })
   }
+  if (subject.value.availableContent.mindmap) {
+    types.push({
+      id: 'mindmap',
+      name: 'Interactive Mindmap',
+      description: 'Explore concepts through visual mind maps',
+      path: `/${subject.value.id}/mindmap`,
+      icon: '🗺️'
+    })
+  }
 
   return types
 })
@@ -102,8 +111,7 @@ const contentTypes = computed(() => {
 }
 
 .subject-detail {
-  max-width: 1200px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .back-btn {

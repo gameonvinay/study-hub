@@ -6,6 +6,7 @@ export interface SubjectCatalog {
     mcq: boolean
     refresher: boolean
     theory: boolean
+    mindmap: boolean
   }
 }
 
@@ -16,8 +17,9 @@ export const subjectCatalog: SubjectCatalog[] = [
     description: 'Data science fundamentals, machine learning, and analytics',
     availableContent: {
       mcq: true,
-      refresher: false,
-      theory: true
+      refresher: true,
+      theory: true,
+      mindmap: true
     }
   },
   {
@@ -27,7 +29,8 @@ export const subjectCatalog: SubjectCatalog[] = [
     availableContent: {
       mcq: true,
       refresher: false,
-      theory: false
+      theory: false,
+      mindmap: false
     }
   },
   {
@@ -37,7 +40,8 @@ export const subjectCatalog: SubjectCatalog[] = [
     availableContent: {
       mcq: true,
       refresher: true,
-      theory: false
+      theory: false,
+      mindmap: false
     }
   }
 ]

@@ -32,9 +32,10 @@ onMounted(() => {
 // Get content type badges for each subject
 const getContentBadges = (subject: typeof subjectCatalog[0]) => {
   const badges = []
-  if (subject.availableContent.mcq) badges.push('MCQ')
-  if (subject.availableContent.refresher) badges.push('Refresher')
-  if (subject.availableContent.theory) badges.push('Theory')
+  if (subject.availableContent.mcq) badges.push({ text: 'MCQ', type: 'default' })
+  if (subject.availableContent.refresher) badges.push({ text: 'Refresher', type: 'default' })
+  if (subject.availableContent.theory) badges.push({ text: 'Theory', type: 'default' })
+  if (subject.availableContent.mindmap) badges.push({ text: 'Mindmap', type: 'default' })
   return badges
 }
 </script>
@@ -68,10 +69,10 @@ const getContentBadges = (subject: typeof subjectCatalog[0]) => {
         <div class="badges">
           <span
             v-for="badge in getContentBadges(subject)"
-            :key="badge"
+            :key="badge.text"
             class="badge"
           >
-            {{ badge }}
+            {{ badge.text }}
           </span>
         </div>
       </RouterLink>
@@ -161,9 +162,9 @@ const getContentBadges = (subject: typeof subjectCatalog[0]) => {
 }
 
 .subject-card:hover {
-  border-color: #646cff;
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(100, 108, 255, 0.2);
+  border-color: #555;
+  transform: translateY(-2px);
+  background: #333;
 }
 
 .subject-card h3 {
@@ -186,7 +187,9 @@ const getContentBadges = (subject: typeof subjectCatalog[0]) => {
 }
 
 .badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   padding: 0.35rem 0.75rem;
   background: rgba(100, 108, 255, 0.15);
   color: #646cff;
@@ -196,6 +199,7 @@ const getContentBadges = (subject: typeof subjectCatalog[0]) => {
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
+
 
 @media (prefers-color-scheme: light) {
   .subject-card {

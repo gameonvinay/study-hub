@@ -1,0 +1,7 @@
+import type { TheoryQuestion } from '../../../types'
+
+export const theoryQuestion32: TheoryQuestion = {
+  "id": 32,
+  "title": "Explain Tableau and Plotly for Data Visualization",
+  "content": "## Tableau\n\n**Tableau** is a leading business intelligence and data visualization tool.\n\n```\nTableau Workflow:\n\n┌─────────────┐   ┌─────────────┐   ┌─────────────┐\n│   Connect   │──▶│   Prepare   │──▶│  Visualize  │\n│   to Data   │   │   & Blend   │   │  & Share    │\n└─────────────┘   └─────────────┘   └─────────────┘\n```\n\n**Features:**\n- Drag-and-drop interface\n- No coding required\n- Interactive dashboards\n- Real-time analytics\n- Server and cloud options\n\n**Products**: Tableau Desktop, Server, Online, Public\n\n---\n\n## Plotly\n\n**Plotly** is an open-source graphing library for creating interactive visualizations.\n\n**Features:**\n- Python, R, JavaScript support\n- Interactive charts\n- Web-based\n- Open-source (free tier)\n- Dash for dashboards\n\n---\n\n## Comparison\n\n| Aspect | Tableau | Plotly |\n|--------|---------|--------|\n| Type | BI Tool | Library |\n| Coding | No coding | Code-based |\n| Cost | Expensive | Free/Paid |\n| Interactivity | Excellent | Excellent |\n| Customization | Limited | High |\n| Learning | Easy | Moderate |\n\n---\n\n## When to Use\n\n| Use Tableau | Use Plotly |\n|-------------|------------|\n| Business users | Developers |\n| Quick dashboards | Custom visualizations |\n| Enterprise | Embedded charts |\n| No coding preference | Code integration |"
+}

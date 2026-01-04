@@ -1,10 +1,10 @@
 import type { TheorySubject } from '../types'
-import dataScienceTheory from '../assets/theory/data_science_theory.json'
+import { allTheoryQuestions } from './data-science/question-bank/theory/index'
 
 export const theorySubjects: TheorySubject[] = [
   {
     id: 'data-science',
     name: 'Introduction to Data Science',
-    questions: dataScienceTheory
+    questions: allTheoryQuestions
   }
 ]

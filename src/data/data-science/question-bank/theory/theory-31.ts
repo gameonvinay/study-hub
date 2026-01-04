@@ -1,0 +1,7 @@
+import type { TheoryQuestion } from '../../../types'
+
+export const theoryQuestion31: TheoryQuestion = {
+  "id": 31,
+  "title": "Explain MATLAB, Mathematica, and Analytica",
+  "content": "## Overview\n\nThese are specialized tools for mathematical and analytical computing.\n\n---\n\n## MATLAB\n\n**MATLAB** (Matrix Laboratory) is a proprietary platform for numerical computing and visualization.\n\n**Features:**\n- Matrix operations\n- Signal processing\n- Control systems\n- Image processing\n- Simulink for modeling\n\n**Use Cases**: Engineering, academia, signal processing\n\n---\n\n## Mathematica\n\n**Mathematica** is a computational software for symbolic and numerical mathematics.\n\n**Features:**\n- Symbolic computation\n- Wolfram Language\n- Advanced mathematics\n- Notebook interface\n- Knowledge integration\n\n**Use Cases**: Research, symbolic math, complex computations\n\n---\n\n## Analytica\n\n**Analytica** is visual software for building and analyzing quantitative models.\n\n**Features:**\n- Visual modeling\n- Influence diagrams\n- Monte Carlo simulation\n- Decision analysis\n- Uncertainty modeling\n\n**Use Cases**: Risk analysis, decision modeling, business analytics\n\n---\n\n## Comparison\n\n| Aspect | MATLAB | Mathematica | Analytica |\n|--------|--------|-------------|----------|\n| Focus | Numerical | Symbolic | Decision modeling |\n| Visualization | Good | Excellent | Good |\n| Learning Curve | Moderate | Steep | Easy |\n| Cost | Expensive | Expensive | Moderate |\n| Industry | Engineering | Academia | Business |"
+}
