@@ -5,7 +5,7 @@ import { theorySubjects } from '../data/theorySubjects'
 import MarkdownIt from 'markdown-it'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/github-dark.css'
-import type { TheorySubject, TheoryQuestion } from '../types'
+import type { TheoryQuestion } from '../types'
 
 interface TocItem {
   id: string
@@ -31,15 +31,20 @@ const scrollProgress = ref(0)
 
 const md = new MarkdownIt({
   html: true,
-  highlight: function (str, lang) {
+  highlight: function (str: string, lang: string): string {
     if (lang && hljs.getLanguage(lang)) {
       try {
         return '<pre class="hljs"><code>' +
           hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
           '</code></pre>'
-      } catch (__) {}
+      } catch (__) {
+        // fallthrough
+      }
     }
-    return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>'
+    const escapeHtml = (text: string) => text.replace(/[&<>"']/g, (m) =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m] || m)
+    )
+    return '<pre class="hljs"><code>' + escapeHtml(str) + '</code></pre>'
   }
 })
 
@@ -51,6 +56,7 @@ const toc = computed<TocItem[]>(() => {
   let match
 
   while ((match = headingRegex.exec(selectedQuestion.value.content)) !== null) {
+    if (!match[1]) continue
     const title = match[1].trim()
     const id = title
       .toLowerCase()
@@ -69,7 +75,7 @@ const renderedContent = computed(() => {
   let content = selectedQuestion.value.content
 
   // Add IDs to headings
-  content = content.replace(/^(#{1,3})\s+(.+)$/gm, (match, hashes, title) => {
+  content = content.replace(/^(#{1,3})\s+(.+)$/gm, (_match, hashes, title) => {
     const id = title
       .trim()
       .toLowerCase()

@@ -27,19 +27,23 @@ function goBack() {
 
 const activeSection = ref('')
 const scrollProgress = ref(0)
-const contentRef = ref<HTMLElement | null>(null)
 
 const md = new MarkdownIt({
   html: true,
-  highlight: function (str, lang) {
+  highlight: function (str: string, lang: string): string {
     if (lang && hljs.getLanguage(lang)) {
       try {
         return '<pre class="hljs"><code>' +
           hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
           '</code></pre>'
-      } catch (__) {}
+      } catch (__) {
+        // fallthrough
+      }
     }
-    return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>'
+    const escapeHtml = (text: string) => text.replace(/[&<>"']/g, (m) =>
+      ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m] || m)
+    )
+    return '<pre class="hljs"><code>' + escapeHtml(str) + '</code></pre>'
   }
 })
 
@@ -51,6 +55,7 @@ const toc = computed<TocItem[]>(() => {
   let match
 
   while ((match = headingRegex.exec(subject.value.content)) !== null) {
+    if (!match[1] || !match[2]) continue
     const level = match[1].length
     const title = match[2].trim()
     const id = title
@@ -70,7 +75,7 @@ const renderedContent = computed(() => {
   let content = subject.value.content
 
   // Add IDs to headings
-  content = content.replace(/^(#{1,3})\s+(.+)$/gm, (match, hashes, title) => {
+  content = content.replace(/^(#{1,3})\s+(.+)$/gm, (_match, hashes, title) => {
     const id = title
       .trim()
       .toLowerCase()
@@ -141,7 +146,7 @@ onMounted(() => {
   // Initial check
   setTimeout(() => {
     handleScroll()
-    if (!activeSection.value && toc.value.length > 0) {
+    if (!activeSection.value && toc.value.length > 0 && toc.value[0]) {
       activeSection.value = toc.value[0].id
     }
   }, 100)

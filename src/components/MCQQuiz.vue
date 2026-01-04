@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { subjects } from '../data/subjects'
-import type { Subject } from '../types'
 
 const route = useRoute()
 const router = useRouter()
@@ -68,7 +67,7 @@ function selectOption(index: number) {
 }
 
 function checkAnswer() {
-  if (selectedAnswer.value === null) return
+  if (selectedAnswer.value === null || !currentQuestion.value) return
   showResult.value = true
 
   if (selectedAnswer.value === currentQuestion.value.correctAnswer) {
@@ -116,6 +115,7 @@ function getOptionClass(index: number) {
   if (!showResult.value) {
     return selectedAnswer.value === index ? 'selected' : ''
   }
+  if (!currentQuestion.value) return ''
   if (index === currentQuestion.value.correctAnswer) {
     return 'correct'
   }
@@ -147,7 +147,7 @@ function getOptionClass(index: number) {
         <span class="score">Score: {{ score }}/{{ totalQuestions }}</span>
       </div>
 
-      <div class="question-card">
+      <div v-if="currentQuestion" class="question-card">
         <p class="question-text">{{ currentQuestion.question }}</p>
 
         <div class="options">
