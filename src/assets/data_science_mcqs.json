@@ -1,0 +1,1564 @@
+[
+  {
+    "id": 1,
+    "question": "What is the first step in the data science methodology?",
+    "options": [
+      "Data Collection",
+      "Business Understanding",
+      "Modeling",
+      "Evaluation"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 2,
+    "question": "Which phase involves building predictive or descriptive models?",
+    "options": [
+      "Data Collection",
+      "Data Understanding",
+      "Modeling",
+      "Evaluation"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 3,
+    "question": "What is the main goal of predictive analytics?",
+    "options": [
+      "To analyze past events",
+      "To forecast future outcomes",
+      "To summarize historical data",
+      "To visualize data trends"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 4,
+    "question": "What type of predictive analytics method would be most suitable for forecasting sales trends over the next quarter?",
+    "options": [
+      "Classification",
+      "Regression",
+      "Time-series Analysis",
+      "Anomaly Detection"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 5,
+    "question": "What type of machine learning method is classification?",
+    "options": [
+      "Unsupervised learning",
+      "Supervised learning",
+      "Reinforcement learning",
+      "Semi-supervised learning"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 6,
+    "question": "Which type of classifier involves the creation and application of rules, such as decision trees?",
+    "options": [
+      "Inductive/deductive classifiers",
+      "Transudative classifiers",
+      "Heuristics-based classifiers",
+      "Probabilistic classifiers"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 7,
+    "question": "Which of the following is NOT a metric used to evaluate the performance of a classification model?",
+    "options": [
+      "Accuracy",
+      "Precision",
+      "Root Mean Squared Error (RMSE)",
+      "Recall"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 8,
+    "question": "You are working with a large dataset with high dimensionality. Which classification algorithm might be a good choice for this scenario?",
+    "options": [
+      "Decision Tree",
+      "K-Nearest Neighbors",
+      "Naive Bayes",
+      "Support Vector Machine"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": 9,
+    "question": "What problem is indicated by an algorithm performing well on training data but poorly on testing data?",
+    "options": [
+      "Multicollinearity",
+      "Underfitting",
+      "Overfitting",
+      "Homoscedasticity"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 10,
+    "question": "In regression analysis, what is another name for the response variable?",
+    "options": [
+      "Target variable",
+      "Predictor variable",
+      "Independent variable",
+      "Outlier variable"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 11,
+    "question": "What is another term for anomaly detection?",
+    "options": [
+      "Outlier detection",
+      "Trend analysis",
+      "Data normalization",
+      "Signal processing"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 12,
+    "question": "Which method measures the number of standard deviations a data point is from the mean?",
+    "options": [
+      "IQR",
+      "Z-score",
+      "KNN",
+      "DBSCAN"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 13,
+    "question": "Which of the following is an example of a simple text prediction application?",
+    "options": [
+      "Speech-to-text transcription",
+      "Image captioning",
+      "Autocomplete in search engines",
+      "Sentiment analysis"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 14,
+    "question": "A higher BLEU score in text prediction indicates:",
+    "options": [
+      "Better performance",
+      "Worse performance",
+      "No change in performance",
+      "The model is overfitting"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 15,
+    "question": "Which of the following is NOT a type of recommender system?",
+    "options": [
+      "Content-based filtering",
+      "Collaborative filtering",
+      "User-based filtering",
+      "Deep filtering"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": 16,
+    "question": "Which application area is NOT typically associated with recommender systems?",
+    "options": [
+      "E-commerce",
+      "Weather forecasting",
+      "Streaming services",
+      "Social media"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 17,
+    "question": "Which of the following types of collaborative filtering uses machine learning algorithms to build a model on the user-item rating dataset?",
+    "options": [
+      "Memory-Based CF",
+      "User-Based CF",
+      "Model-Based CF",
+      "Item-Based CF"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 18,
+    "question": "Which similarity measure calculates the straight-line distance between two users' preference vectors?",
+    "options": [
+      "Cosine Similarity",
+      "Pearson Correlation",
+      "Euclidean Distance",
+      "Jaccard Similarity"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 19,
+    "question": "Which of the following is a component of Non-Negative Matrix Factorization?",
+    "options": [
+      "Mean Matrix",
+      "Coefficient Matrix",
+      "Diagonal Matrix",
+      "Singular Matrix"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 20,
+    "question": "What is a Non-Negative Matrix (NNM)?",
+    "options": [
+      "A matrix with all entries greater than zero",
+      "A matrix with all entries less than zero",
+      "A matrix with all entries non-negative",
+      "A matrix with all entries equal to zero"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 21,
+    "question": "Which step is NOT part of the knowledge discovery process in data mining?",
+    "options": [
+      "Data cleaning",
+      "Data visualization",
+      "Data integration",
+      "Pattern evaluation"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 22,
+    "question": "Which branch of machine learning does clustering fall under?",
+    "options": [
+      "Unsupervised Learning",
+      "Reinforcement Learning",
+      "Supervised Learning",
+      "Semi-supervised Learning"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 23,
+    "question": "What is another name for data mining?",
+    "options": [
+      "Data Cleaning",
+      "Data Transformation",
+      "Knowledge Discovery in Database (KDD)",
+      "Data Warehousing"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 24,
+    "question": "Which application of data mining helps in predicting customer behavior for enhancing customer relationships?",
+    "options": [
+      "Market Basket Analysis",
+      "Fraud Detection",
+      "Customer Relationship Management",
+      "Financial Banking"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 25,
+    "question": "In association rule mining, what is the 'antecedent' in the rule If A then B?",
+    "options": [
+      "The 'If' element",
+      "The 'Then' element",
+      "The frequency of an itemset",
+      "The ratio of transactions"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 26,
+    "question": "Which algorithm uses a breadth-first search and Hash Tree to calculate the itemset efficiently?",
+    "options": [
+      "Eclat Algorithm",
+      "F-P Growth Algorithm",
+      "Apriori Algorithm",
+      "Decision Tree Algorithm"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 27,
+    "question": "Which clustering method divides data into non-hierarchical groups and is also known as the centroid-based method?",
+    "options": [
+      "Density-Based Clustering",
+      "Hierarchical Clustering",
+      "Partitioning Clustering",
+      "Fuzzy Clustering"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 28,
+    "question": "Which type of clustering allows a data object to belong to more than one cluster?",
+    "options": [
+      "Partitioning Clustering",
+      "Density-Based Clustering",
+      "Hierarchical Clustering",
+      "Fuzzy Clustering"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": 29,
+    "question": "What are the primary components of a graph in graph analytics?",
+    "options": [
+      "Nodes, clusters, dimensions",
+      "Vertices, paths, cycles",
+      "Nodes (vertices), arcs (edges), weights",
+      "Degrees, cycles, connectivity"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 30,
+    "question": "Which of the following is NOT a property of graphs?",
+    "options": [
+      "Degree",
+      "Path",
+      "Cycle",
+      "Frequency"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": 31,
+    "question": "What does NLP stand for?",
+    "options": [
+      "Natural Learning Process",
+      "Neural Language Processing",
+      "Natural Language Processing",
+      "Neural Learning Programming"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 32,
+    "question": "Which of the following techniques is used to reduce words to their base or root forms?",
+    "options": [
+      "Tokenization",
+      "Lemmatization",
+      "Stopword Removal",
+      "Text Summarization"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 33,
+    "question": "Which of the following is NOT a technique used in extractive summarization?",
+    "options": [
+      "Statistical Approaches",
+      "Sequence-to-Sequence Models",
+      "Graph-Based Methods",
+      "Sentence Scoring"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 34,
+    "question": "Which of the following is a graph-based method used in extractive summarization?",
+    "options": [
+      "BERT",
+      "LexRank",
+      "LSTM",
+      "GPT"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 35,
+    "question": "Which of the following is a technique used in abstractive summarization?",
+    "options": [
+      "TextRank",
+      "TF-IDF",
+      "Attention Mechanisms",
+      "Sentence Scoring"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 36,
+    "question": "Sequence-to-Sequence models commonly used in abstractive summarization include:",
+    "options": [
+      "BERT and GPT",
+      "RNNs and LSTMs",
+      "TextRank and LexRank",
+      "TF-IDF and LSA"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 37,
+    "question": "Which library provides extensive corpora and lexical resources?",
+    "options": [
+      "NLTK",
+      "spaCy",
+      "Keras",
+      "Theano"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 38,
+    "question": "Which library is recommended for production-grade NLP applications?",
+    "options": [
+      "NLTK",
+      "spaCy",
+      "Scikit-learn",
+      "SciPy"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 39,
+    "question": "Who created the first chatbot, Eliza, and when?",
+    "options": [
+      "Keneth Colby, 1972",
+      "Rollo Carpenter, 1988",
+      "Joseph Weisenbaum, 1964-1966",
+      "ActiveBuddy Inc., 2001"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 40,
+    "question": "What year was the chatbot SmarterChild developed?",
+    "options": [
+      "1995",
+      "2001",
+      "1988",
+      "2016"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 41,
+    "question": "What type of chatbot uses voice-to-text and text-to-speech communication?",
+    "options": [
+      "Skills chatbots",
+      "Hybrid chatbots",
+      "Voice bots",
+      "Menu-based chatbots"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 42,
+    "question": "Which chatbot focuses on content creation and marketing assistance?",
+    "options": [
+      "Jasper Chat",
+      "Claude",
+      "Perplexity AI",
+      "Chat by Copy.ai"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 43,
+    "question": "Which of the following categories do databases in data science fall into?",
+    "options": [
+      "SQL, NoSQL, Graph-based",
+      "Relational, Document, Key-Value",
+      "Hierarchical, Network, Relational",
+      "Object-oriented, Document, Graph-based"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 44,
+    "question": "Which programming languages are most commonly used in data science?",
+    "options": [
+      "C++, Java, PHP",
+      "Julia, Python, R, Scala",
+      "HTML, CSS, JavaScript",
+      "Swift, Kotlin, Objective-C"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 45,
+    "question": "What is Cassandra primarily used for?",
+    "options": [
+      "Relational database management",
+      "Distributed data storage",
+      "In-memory caching",
+      "Data visualization"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 46,
+    "question": "Which of the following companies originally developed Cassandra?",
+    "options": [
+      "Google",
+      "Facebook",
+      "Amazon",
+      "Microsoft"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 47,
+    "question": "Which type of NoSQL database is MongoDB?",
+    "options": [
+      "Key-Value Store",
+      "Document Store",
+      "Wide Column Store",
+      "Graph Database"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 48,
+    "question": "Which of the following is a key-value NoSQL database?",
+    "options": [
+      "Redis",
+      "MongoDB",
+      "HBase",
+      "Cassandra"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 49,
+    "question": "What is the maximum storage capacity that Amazon DocumentDB can automatically scale up to?",
+    "options": [
+      "64 TiB",
+      "128 TiB",
+      "256 TiB",
+      "512 TiB"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 50,
+    "question": "Amazon DocumentDB is designed to be compatible with which database?",
+    "options": [
+      "MySQL",
+      "PostgreSQL",
+      "MongoDB",
+      "Cassandra"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 51,
+    "question": "Apache Hive is built on top of which framework?",
+    "options": [
+      "Apache Spark",
+      "Apache Hadoop",
+      "Apache Flink",
+      "Apache Storm"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 52,
+    "question": "Which Hive service provides a shell for executing Hive queries and commands?",
+    "options": [
+      "Hive Web UI",
+      "Hive CLI",
+      "Hive Server",
+      "Thrift Server"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 53,
+    "question": "What type of database is HBase?",
+    "options": [
+      "Relational database",
+      "Document-oriented database",
+      "Column-oriented database",
+      "Key-value store"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 54,
+    "question": "HBase is built on top of which file system?",
+    "options": [
+      "NTFS",
+      "HDFS",
+      "ext4",
+      "FAT32"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 55,
+    "question": "MariaDB is developed by the original developers of which database system?",
+    "options": [
+      "PostgreSQL",
+      "Oracle",
+      "MySQL",
+      "SQLite"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 56,
+    "question": "What types of licenses are used for MariaDB?",
+    "options": [
+      "MIT",
+      "Apache",
+      "GPL, LGPL, or BSD",
+      "Proprietary"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 57,
+    "question": "What type of database is MongoDB?",
+    "options": [
+      "Relational Database",
+      "Document-Oriented Database",
+      "Key-Value Store",
+      "Column-Oriented Database"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 58,
+    "question": "Which company originally developed MongoDB?",
+    "options": [
+      "Microsoft",
+      "IBM",
+      "10gen",
+      "Oracle"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 59,
+    "question": "Which phase of product design involves developing a deeper understanding of the users?",
+    "options": [
+      "Ideate",
+      "Prototype",
+      "Empathize",
+      "Test"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 60,
+    "question": "Which phase involves brainstorming and coming up with as many creative solutions as possible?",
+    "options": [
+      "Test",
+      "Define",
+      "Ideate",
+      "Empathize"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 61,
+    "question": "In landscape design, which of the following is considered an artificial feature?",
+    "options": [
+      "Natural Pond",
+      "Brick walkway",
+      "Grass lawn",
+      "River"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 62,
+    "question": "Which of the following is NOT a method of feature selection?",
+    "options": [
+      "Filter Methods",
+      "Wrapper Methods",
+      "Embedded Methods",
+      "Interaction Features"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": 63,
+    "question": "Which type of reasoning deduces new information from logically related known information?",
+    "options": [
+      "Inductive Reasoning",
+      "Abductive Reasoning",
+      "Deductive Reasoning",
+      "Common Sense Reasoning"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 64,
+    "question": "Which type of reasoning is based on informal experiences and good judgment rather than exact logic?",
+    "options": [
+      "Deductive Reasoning",
+      "Common Sense Reasoning",
+      "Inductive Reasoning",
+      "Abductive Reasoning"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 65,
+    "question": "Which component is NOT a part of a Fuzzy Inference System (FIS)?",
+    "options": [
+      "Rule Base",
+      "Inference Engine",
+      "Fuzzification Interface",
+      "Decision Tree"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": 66,
+    "question": "What is a fuzzy set?",
+    "options": [
+      "A set with a clearly defined boundary",
+      "A set with no elements",
+      "A set without a crisp, clearly defined boundary",
+      "A set with only binary elements"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 67,
+    "question": "Which AI framework offers an array of supervised and unsupervised algorithms and is based on Python, allowing the extraction of features from images and text?",
+    "options": [
+      "Jax",
+      "Scikit-learn",
+      "PaddlePaddle",
+      "Theano"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 68,
+    "question": "Which of the following AI frameworks was developed by Google's Brain team and first released in 2015?",
+    "options": [
+      "PyTorch",
+      "Theano",
+      "TensorFlow",
+      "Microsoft CNTK"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 69,
+    "question": "What is the main focus of Data Science?",
+    "options": [
+      "Past",
+      "Present",
+      "Future",
+      "All of the above"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 70,
+    "question": "Which process is generally used for the integration of data in Data Science applications?",
+    "options": [
+      "ETL (Extract-Transform-Load)",
+      "ELT (Extract-Load-Transform)",
+      "TLE (Transform-Load-Extract)",
+      "LET (Load-Extract-Transform)"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 71,
+    "question": "What is the primary purpose of statistics?",
+    "options": [
+      "Data visualization",
+      "Data summarization",
+      "Data collection",
+      "Data transformation"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 72,
+    "question": "Which type of data do Business Intelligence systems primarily work with?",
+    "options": [
+      "Real-time data only",
+      "Historical data only",
+      "Real-time and historical data",
+      "Future predictions only"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 73,
+    "question": "Which of the following refers to the speed at which new data is generated and processed in big data?",
+    "options": [
+      "Volume",
+      "Variety",
+      "Velocity",
+      "Veracity"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 74,
+    "question": "In which industry is big data used for predictive analytics and personalized medicine?",
+    "options": [
+      "Retail",
+      "Finance",
+      "Healthcare",
+      "Manufacturing"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 75,
+    "question": "What makes the integration of big data sets complicated?",
+    "options": [
+      "Data volume only",
+      "Data variety and velocity",
+      "Data storage capacity",
+      "Data processing speed"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 76,
+    "question": "What is the main focus of machine learning?",
+    "options": [
+      "Identifying patterns in data to make predictions or decisions",
+      "Storing large amounts of data",
+      "Visualizing data trends",
+      "Collecting data from various sources"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 77,
+    "question": "Which of the following is NOT a main type of machine learning?",
+    "options": [
+      "Supervised Learning",
+      "Unsupervised Learning",
+      "Reinforcement Learning",
+      "Recurrent Learning"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": 78,
+    "question": "What is the first step in the machine learning life cycle?",
+    "options": [
+      "Gathering Data",
+      "Data Preparation",
+      "Model Training",
+      "Evaluation"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 79,
+    "question": "What percentage of time do data scientists typically spend on data engineering tasks?",
+    "options": [
+      "30-40%",
+      "50-60%",
+      "70-80%",
+      "90-100%"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 80,
+    "question": "Which programming language is commonly used by data engineers for ETL tasks?",
+    "options": [
+      "Java",
+      "Python",
+      "C++",
+      "Ruby"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 81,
+    "question": "What role does data science play in medical research?",
+    "options": [
+      "It helps manage hospital finances",
+      "It helps improve image quality in MRIs and x-rays",
+      "It helps schedule patient appointments",
+      "It helps maintain medical equipment"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 82,
+    "question": "Why is the data science pipeline important for making rapid decisions?",
+    "options": [
+      "It automates report generation",
+      "It provides clean, reliable, and updated data",
+      "It reduces storage costs",
+      "It eliminates the need for data analysts"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 83,
+    "question": "What is the primary goal of data analysis?",
+    "options": [
+      "To organize data in spreadsheets",
+      "To create charts and graphs",
+      "To extract meaningful insights and inform decisions",
+      "To store data efficiently"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 84,
+    "question": "What is the first step in the data analysis process?",
+    "options": [
+      "Data Collection",
+      "Defining the question or objective",
+      "Data Cleaning",
+      "Modeling"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 85,
+    "question": "What does data wrangling refer to?",
+    "options": [
+      "Data collection from multiple sources",
+      "Data manipulation (changing the structure of data)",
+      "Data visualization",
+      "Data storage"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 86,
+    "question": "What is the difference between descriptive and inferential statistics?",
+    "options": [
+      "Descriptive statistics predict future trends, while inferential statistics summarize past data",
+      "Descriptive statistics summarize a dataset, while inferential statistics draw conclusions about a population",
+      "They are the same thing",
+      "Descriptive statistics use visualization, while inferential statistics use numbers"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 87,
+    "question": "What is the main benefit of data visualization?",
+    "options": [
+      "It replaces the need for data analysis",
+      "It makes data exploration and understanding more efficient",
+      "It automatically cleans the data",
+      "It stores data in a compressed format"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 88,
+    "question": "Which type of analysis focuses on summarizing historical data?",
+    "options": [
+      "Prescriptive Analysis",
+      "Predictive Analysis",
+      "Descriptive Analysis",
+      "Diagnostic Analysis"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 89,
+    "question": "Which type of analysis helps identify the reasons behind past outcomes?",
+    "options": [
+      "Descriptive Analysis",
+      "Diagnostic Analysis",
+      "Predictive Analysis",
+      "Prescriptive Analysis"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 90,
+    "question": "Which type of analytics forecasts future outcomes based on historical data?",
+    "options": [
+      "Descriptive Analytics",
+      "Diagnostic Analytics",
+      "Predictive Analytics",
+      "Text Analysis"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 91,
+    "question": "Which type of analysis involves analyzing textual data?",
+    "options": [
+      "Predictive Analytics",
+      "Text Analysis",
+      "Descriptive Analysis",
+      "Diagnostic Analysis"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 92,
+    "question": "Which type of analytics recommends actions to achieve desired outcomes?",
+    "options": [
+      "Descriptive Analytics",
+      "Predictive Analytics",
+      "Prescriptive Analytics",
+      "Diagnostic Analytics"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 93,
+    "question": "What does Redis stand for?",
+    "options": [
+      "Remote Dictionary Server",
+      "Relational Database Server",
+      "Rapid Data Indexing System",
+      "Real-time Database System"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 94,
+    "question": "What does EDA stand for in data science?",
+    "options": [
+      "Every Data Analysis",
+      "Exploratory Data Analysis",
+      "Enhanced Data Assessment",
+      "Effective Data Aggregation"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 95,
+    "question": "What is the primary goal of sentiment analysis in NLP?",
+    "options": [
+      "To analyze the structure of sentences",
+      "To determine the emotional tone of a piece of text",
+      "To identify grammatical errors",
+      "To translate text from one language to another"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 96,
+    "question": "What distinguishes statistics from business intelligence?",
+    "options": [
+      "Statistics emphasizes understanding data patterns and relationships to drive business decisions",
+      "Business intelligence focuses on developing mathematical models to analyze data",
+      "Statistics involves applying advanced machine learning algorithms to extract insights from data",
+      "Business intelligence encompasses a broader range of data exploration and visualization techniques"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 97,
+    "question": "Which of the following is an example of predictive analysis application?",
+    "options": [
+      "Determining the average salary of employees in a company",
+      "Forecasting sales for the upcoming quarter",
+      "Calculating the mean and median of a dataset",
+      "Creating a pie chart to represent market share"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 98,
+    "question": "What is the purpose of sentiment analysis in social media monitoring?",
+    "options": [
+      "To identify spam accounts",
+      "To gauge public opinion and sentiment towards specific topics, brands, or products",
+      "To analyze network traffic patterns",
+      "To measure the number of followers on social media platforms"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 99,
+    "question": "What is the purpose of feature scaling in regression?",
+    "options": [
+      "To transform categorical variables into numerical variables",
+      "To remove outliers from the dataset",
+      "To standardize or normalize the scale of input features to ensure equal importance during model training",
+      "To create interaction terms between input features"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 100,
+    "question": "Which of the following is an advantage of NoSQL databases over SQL databases?",
+    "options": [
+      "Strong consistency",
+      "Horizontal scalability",
+      "Complex querying capabilities",
+      "Schema enforcement"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 101,
+    "question": "What is the purpose of seasonality detection in time series analysis?",
+    "options": [
+      "To identify repeating patterns or cycles in the data that occur at regular intervals",
+      "To estimate the trend component of the time series",
+      "To remove noise from the time series data",
+      "To identify outliers in the time series"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 102,
+    "question": "Which of the following is a challenge in abstractive summarization?",
+    "options": [
+      "Preserving the exact wording and phrases from the original text",
+      "Generating grammatically correct and coherent summaries",
+      "Selecting the most informative sentences from the text",
+      "Extracting key phrases and concepts from the text"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 103,
+    "question": "What does ROUGE measure in text summarization evaluation?",
+    "options": [
+      "The fluency of generated summaries",
+      "The coherence of generated summaries",
+      "The similarity between generated summaries and reference summaries",
+      "The informativeness of generated summaries"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 104,
+    "question": "Which of the following is NOT a use case for Cassandra in data science?",
+    "options": [
+      "Real-time analytics",
+      "Internet of Things (IoT) data management",
+      "Natural language processing",
+      "Fraud detection"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 105,
+    "question": "Which of the following is a use case for CouchDB?",
+    "options": [
+      "OLAP (Online Analytical Processing) applications",
+      "Real-time analytics",
+      "Content management systems",
+      "Transaction processing systems"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 106,
+    "question": "What is the significance of partitioning in Hive?",
+    "options": [
+      "It allows data to be physically stored in separate directories based on partition keys, improving query performance",
+      "It enables data replication for fault tolerance",
+      "It facilitates data encryption for enhanced security",
+      "It optimizes data compression to reduce storage costs"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 107,
+    "question": "What is the purpose of defuzzification in fuzzy logic systems?",
+    "options": [
+      "To convert crisp inputs into fuzzy outputs",
+      "To convert fuzzy outputs into crisp, actionable decisions",
+      "To calculate the degree of membership for each element in a fuzzy set",
+      "To evaluate the truth value of fuzzy propositions"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 108,
+    "question": "What is collaborative filtering in recommender systems?",
+    "options": [
+      "A technique that recommends items similar to those the user has interacted with in the past",
+      "A technique that analyzes item attributes and recommends items with similar features",
+      "A technique that mines association rules to identify item relationships",
+      "A technique that predicts user preferences based on the preferences of similar users"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": 109,
+    "question": "Which of the following is an advantage of using a graph-based database over a relational database for certain applications?",
+    "options": [
+      "Better support for transactional consistency",
+      "Ability to enforce strict schema constraints",
+      "Ability to represent and query highly interconnected data",
+      "Optimized for storing and querying large volumes of structured data"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 110,
+    "question": "What is a traversal in Neo4j?",
+    "options": [
+      "A process of storing data in graph structures",
+      "A process of querying data by following relationships between nodes",
+      "A process of converting graph data into tabular format",
+      "A process of compressing graph data to reduce storage space"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 111,
+    "question": "In Scala, what does the term 'covariance' refer to?",
+    "options": [
+      "The ability to define methods that can accept multiple argument types",
+      "The property of a type parameter indicating that it can vary in the same direction as its container type",
+      "The process of converting one data type to another implicitly",
+      "The feature allowing classes to inherit from multiple parent classes"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 112,
+    "question": "What is the main function of the ResourceManager in Hadoop YARN (Yet Another Resource Negotiator)?",
+    "options": [
+      "To manage and monitor Hadoop cluster nodes",
+      "To manage storage resources within the Hadoop Distributed File System (HDFS)",
+      "To manage and allocate computing resources (CPU, memory) across applications in the cluster",
+      "To schedule and execute MapReduce jobs on the Hadoop cluster"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 113,
+    "question": "In which scenario would Apache Storm be most suitable?",
+    "options": [
+      "Real-time processing of social media data for sentiment analysis",
+      "Batch processing of historical sales data for monthly reports",
+      "Static analysis of log files for system performance monitoring",
+      "Indexing and searching large volumes of text documents"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 114,
+    "question": "Which of the following steps is NOT typically part of the process of creating a data product?",
+    "options": [
+      "Data collection and preprocessing",
+      "Model training and evaluation",
+      "Deployment and monitoring",
+      "Business requirements analysis"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": 115,
+    "question": "What fundamental service does GitHub primarily offer to software developers?",
+    "options": [
+      "A cloud-based platform for storing, managing, and sharing code repositories using Git version control",
+      "A suite of project management tools tailored for software development teams",
+      "A communication platform for developers to collaborate and discuss coding projects",
+      "A scalable cloud storage solution optimized for hosting large datasets"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 116,
+    "question": "Which feature of MongoDB makes it suitable for real-time analytics and data science applications?",
+    "options": [
+      "ACID transactions for ensuring data consistency and integrity",
+      "Sharding and replication for horizontal scalability and high availability",
+      "GridFS for storing and retrieving large files, such as images and videos",
+      "Aggregation framework for performing complex data analysis and aggregations"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": 117,
+    "question": "Which feature of Teradata makes it suitable for handling large-scale data analytics tasks?",
+    "options": [
+      "Teradata's integration with Apache Hadoop for distributed processing",
+      "Teradata's support for real-time data streaming and event processing",
+      "Teradata's in-memory processing capabilities for high-speed analytics",
+      "Teradata's ability to automatically optimize and tune database queries"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 118,
+    "question": "What distinguishes reasoning AI from other AI approaches?",
+    "options": [
+      "Reasoning AI primarily focuses on pattern recognition and classification tasks",
+      "Reasoning AI relies on predefined rules and logic to make decisions and draw conclusions",
+      "Reasoning AI emphasizes deep learning techniques for feature extraction and representation",
+      "Reasoning AI is specialized in natural language processing and understanding"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 119,
+    "question": "What role does MATLAB play in computational tasks?",
+    "options": [
+      "It serves as a platform for data analysis and visualization",
+      "It functions as a database management system",
+      "It acts as a web development tool",
+      "It facilitates artificial intelligence research"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 120,
+    "question": "What is the typical source of data for business intelligence compared to data science?",
+    "options": [
+      "Business intelligence relies on structured data stored in relational databases, while data science works with both structured and unstructured data from various sources",
+      "Business intelligence primarily uses unstructured data from social media platforms, while data science relies on structured data from transactional databases",
+      "Business intelligence and data science both use structured data from spreadsheets and CSV files",
+      "Business intelligence and data science both rely on collecting data through online surveys and questionnaires"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 121,
+    "question": "Which of the following statements best describes the process of topic modeling with LDA?",
+    "options": [
+      "LDA assigns each word in a document to a specific topic",
+      "LDA assigns each document in a corpus to a specific topic",
+      "LDA identifies a set of topics from a collection of documents and assigns each document a distribution over those topics",
+      "LDA identifies the sentiment of each document in a corpus"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 122,
+    "question": "In a classification problem, what is the training set used for?",
+    "options": [
+      "To evaluate the performance of the classifier",
+      "To make predictions on new, unseen data points",
+      "To tune hyperparameters of the classifier",
+      "To train the classifier to learn the relationship between features and labels"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": 123,
+    "question": "What does the confusion matrix represent in classification?",
+    "options": [
+      "It represents the number of true positives, true negatives, false positives, and false negatives",
+      "It represents the correlation between features and labels",
+      "It represents the distribution of classes in the dataset",
+      "It represents the performance of the classifier on unseen data"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 124,
+    "question": "In which of the following scenarios would a rule-based chatbot be most suitable?",
+    "options": [
+      "Providing personalized product recommendations in an e-commerce platform",
+      "Assisting users with troubleshooting technical issues in real-time",
+      "Engaging users in casual conversation and entertaining them with jokes",
+      "Analyzing customer feedback and sentiment to improve service quality"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 125,
+    "question": "In which scenario would anomaly detection using artificial intelligence be least effective?",
+    "options": [
+      "Identifying defective products in a manufacturing assembly line",
+      "Monitoring website traffic to detect unusual spikes in user activity",
+      "Predicting customer churn based on historical sales data",
+      "Detecting abnormal patterns in EEG signals for diagnosing neurological disorders"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 126,
+    "question": "Which approach to anomaly detection is based on building a model of normal behavior and flagging data points that deviate significantly from this model?",
+    "options": [
+      "Supervised learning",
+      "Unsupervised learning",
+      "Semi-supervised learning",
+      "Reinforcement learning"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 127,
+    "question": "Which of the following is NOT a feature of document databases?",
+    "options": [
+      "ACID transactions",
+      "Horizontal scalability",
+      "Schema flexibility",
+      "Data partitioning"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 128,
+    "question": "Which of the following is a typical use case for HBase?",
+    "options": [
+      "OLAP (Online Analytical Processing) applications",
+      "Real-time analytics",
+      "Content management systems",
+      "Fraud detection"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 129,
+    "question": "Which of the following statements about AllegroGraph is true?",
+    "options": [
+      "AllegroGraph is a relational database management system",
+      "AllegroGraph is a document-oriented NoSQL database",
+      "AllegroGraph is a triplestore designed for storing RDF data",
+      "AllegroGraph is primarily used for graph-based machine learning algorithms"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 130,
+    "question": "In content-based filtering, which of the following statements is true?",
+    "options": [
+      "It relies on users' past interactions and preferences to make recommendations",
+      "It primarily focuses on analyzing item features and characteristics",
+      "It uses collaborative filtering techniques to generate recommendations",
+      "It is not suitable for recommending items with complex attributes"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 131,
+    "question": "Which of the following algorithms is commonly used for association rule mining?",
+    "options": [
+      "K-means clustering",
+      "Apriori",
+      "Decision trees",
+      "Linear regression"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 132,
+    "question": "In the context of association rule mining, what does the 'confidence' measure indicate?",
+    "options": [
+      "The frequency of occurrence of a rule in the dataset",
+      "The likelihood of a rule being true given the presence of antecedent items",
+      "The support of the antecedent in the dataset",
+      "The strength of association between antecedent and consequent items"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 133,
+    "question": "What is a distinguishing feature of Plotly among data visualization libraries?",
+    "options": [
+      "It is specifically designed for static, publication-quality plots",
+      "It offers a wide range of predefined chart templates for quick visualization",
+      "It provides interactive plots that allow users to explore data dynamically",
+      "It supports only basic chart types such as bar plots and line charts"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 134,
+    "question": "What is the primary difference between RDDs (Resilient Distributed Datasets) and DataFrames in Apache Spark?",
+    "options": [
+      "RDDs are immutable while DataFrames are mutable",
+      "RDDs offer higher-level abstractions for data manipulation compared to DataFrames",
+      "RDDs store data in a tabular format while DataFrames store data as a collection of objects",
+      "DataFrames provide optimized query optimization and execution plans compared to RDDs"
+    ],
+    "correctAnswer": 3
+  },
+  {
+    "id": 135,
+    "question": "What feature sets Tableau apart from other data visualization tools in terms of user interaction and dashboard creation?",
+    "options": [
+      "Its capacity to execute complex statistical analyses within its interface",
+      "Its capability to visualize real-time streaming data seamlessly",
+      "Its utilization of an intuitive drag-and-drop interface, facilitating the creation of interactive dashboards",
+      "Its integration with various machine learning libraries, enhancing predictive analytics capabilities"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 136,
+    "question": "Which Python library is commonly used for natural language processing (NLP) tasks such as sentiment analysis and named entity recognition?",
+    "options": [
+      "NumPy",
+      "TensorFlow",
+      "NLTK (Natural Language Toolkit)",
+      "Matplotlib"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 137,
+    "question": "Which of the following best describes the role of R in data science?",
+    "options": [
+      "R is primarily used for web development and building APIs",
+      "R is a general-purpose programming language used for building operating systems",
+      "R is widely employed for statistical analysis, data visualization, and machine learning",
+      "R is mainly utilized for mobile app development and game programming"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 138,
+    "question": "What fundamental task does Named Entity Recognition (NER) primarily serve in the domain of natural language processing (NLP)?",
+    "options": [
+      "To discern and isolate linguistic attributes for subsequent sentiment analysis",
+      "To categorize textual documents into predetermined thematic clusters",
+      "To identify and extract specific entities, including persons, organizations, and locations, from textual data",
+      "To formulate conversational responses with human-like fluency in chatbots or conversational agents"
+    ],
+    "correctAnswer": 2
+  },
+  {
+    "id": 139,
+    "question": "What key feature distinguishes Keyword recognition-based chatbots from other types?",
+    "options": [
+      "Their utilization of advanced machine learning algorithms for natural language comprehension",
+      "Their reliance on predefined keywords or phrases to discern user intents and produce responses",
+      "Their implementation of deep neural networks to emulate human-like conversational abilities",
+      "Their integration of context-awareness mechanisms to tailor responses according to user interactions"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 140,
+    "question": "Which statement best describes predictive analysis?",
+    "options": [
+      "Predictive analysis focuses on analyzing historical data to understand past trends and patterns",
+      "Predictive analysis involves using statistical algorithms and machine learning techniques to forecast future outcomes",
+      "Predictive analysis is primarily concerned with visualizing data to gain insights and communicate findings",
+      "Predictive analysis aims to identify causality and establish relationships between variables in a dataset"
+    ],
+    "correctAnswer": 1
+  },
+  {
+    "id": 141,
+    "question": "In machine learning, what is a fundamental step after data preparation but before model training?",
+    "options": [
+      "Feature engineering",
+      "Hyperparameter tuning",
+      "Model evaluation",
+      "Model validation"
+    ],
+    "correctAnswer": 0
+  },
+  {
+    "id": 142,
+    "question": "What is a primary responsibility of data engineers in the context of data engineering?",
+    "options": [
+      "Developing complex machine learning algorithms for predictive modeling tasks",
+      "Designing and implementing scalable data storage solutions such as data lakes and warehouses",
+      "Visualizing data trends and patterns using interactive dashboards and visualization tools",
+      "Evaluating the performance and accuracy of machine learning models through cross-validation techniques"
+    ],
+    "correctAnswer": 1
+  }
+]
