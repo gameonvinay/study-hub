@@ -70,12 +70,24 @@ function checkAnswer() {
   if (selectedAnswer.value === null || !currentQuestion.value) return
   showResult.value = true
 
-  if (selectedAnswer.value === currentQuestion.value.correctAnswer) {
+  const isCorrect = selectedAnswer.value === currentQuestion.value.correctAnswer
+
+  if (isCorrect) {
     if (!answeredQuestions.value.has(currentIndex.value)) {
       score.value++
     }
+    answeredQuestions.value.add(currentIndex.value)
+
+    // Auto-advance to next question if correct
+    setTimeout(() => {
+      if (!isLastQuestion.value) {
+        nextQuestion()
+      }
+    }, 800) // Brief delay to show the correct answer feedback
+  } else {
+    // Only add to answered questions, don't auto-advance
+    answeredQuestions.value.add(currentIndex.value)
   }
-  answeredQuestions.value.add(currentIndex.value)
 }
 
 function nextQuestion() {
