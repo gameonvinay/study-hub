@@ -540,73 +540,123 @@ Extract, Transform, Load - process of data integration from multiple sources.
 
 ### Practice Questions - Module 2
 
+---
+
 **Q1: In ETL tools, what does E, T, and L stand for?**
+
 a) Extract, transfer, load
-b) Extract, transform, load
+
+**b) Extract, transform, load** ✅
+
 c) Extract, transfer, lend
+
 d) Eject, transfer, lend
-**Answer: b) Extract, transform, load**
+
+---
 
 **Q2: Which task includes identification of errors and making corrections?**
+
 a) Feature Selection
+
 b) Data Transformation
-c) Data Cleaning
+
+**c) Data Cleaning** ✅
+
 d) Feature Engineering
-**Answer: c) Data Cleaning**
+
+---
 
 **Q3: We need to identify the most important input data variables for the model. What is this process called?**
+
 a) Data Cleaning
-b) Feature Selection
+
+**b) Feature Selection** ✅
+
 c) Data Transformation
+
 d) Feature Engineering
-**Answer: b) Feature Selection**
+
+---
 
 **Q4: Which is NOT a method of feature selection?**
+
 a) Filter Methods
+
 b) Wrapper Methods
+
 c) Embedded Methods
-d) Interaction Features
-**Answer: d) Interaction Features** (This is feature engineering, not selection!)
+
+**d) Interaction Features** ✅ (This is feature engineering, not selection!)
+
+---
 
 **Q5: What is the primary goal of dimensionality reduction?**
+
 a) Increase number of features
-b) Reduce number of features while retaining information
+
+**b) Reduce number of features while retaining information** ✅
+
 c) Clean the data
+
 d) Transform categorical variables
-**Answer: b) Reduce number of features while retaining information**
+
+---
 
 **Q6: Which technique converts categorical data to numerical?**
+
 a) Normalization
+
 b) Standardization
-c) Encoding
+
+**c) Encoding** ✅
+
 d) Binning
-**Answer: c) Encoding**
+
+---
 
 **Q7: What is the purpose of information distillation?**
+
 a) Clean the data
-b) Extract essential information from large datasets
+
+**b) Extract essential information from large datasets** ✅
+
 c) Select features
+
 d) Transform data formats
-**Answer: b) Extract essential information from large datasets**
+
+---
 
 **Q8: Which process creates new features from existing data?**
+
 a) Feature Selection
+
 b) Data Cleaning
-c) Feature Engineering
+
+**c) Feature Engineering** ✅
+
 d) Data Validation
-**Answer: c) Feature Engineering**
+
+---
 
 **Q9: Min-Max Scaling is a type of:**
+
 a) Feature Selection
-b) Data Transformation (Normalization)
+
+**b) Data Transformation (Normalization)** ✅
+
 c) Data Cleaning
+
 d) Feature Engineering
-**Answer: b) Data Transformation (Normalization)**
+
+---
 
 **Q10: PCA (Principal Component Analysis) is used for:**
+
 a) Data Cleaning
+
 b) Feature Selection
-c) Dimensionality Reduction
+
+**c) Dimensionality Reduction** ✅
+
 d) Data Collection
-**Answer: c) Dimensionality Reduction**
 `

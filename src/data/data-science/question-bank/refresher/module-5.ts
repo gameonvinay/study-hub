@@ -520,73 +520,123 @@ Unsupervised learning that groups similar data points. No labels needed.
 
 ### Practice Questions - Module 5
 
+---
+
 **Q1: Which type of machine learning is classification?**
+
 a) Unsupervised learning
-b) Supervised learning
+
+**b) Supervised learning** ✅
+
 c) Reinforcement learning
+
 d) Semi-supervised
-**Answer: b) Supervised learning**
+
+---
 
 **Q2: Regression is used to predict:**
+
 a) Categories
-b) Continuous numbers
+
+**b) Continuous numbers** ✅
+
 c) Clusters
+
 d) Patterns
-**Answer: b) Continuous numbers**
+
+---
 
 **Q3: In regression "Yt = μt + εt", what is the noise term?**
+
 a) Yt
+
 b) μt
-c) εt
+
+**c) εt** ✅ (epsilon)
+
 d) There is no noise term
-**Answer: c) εt** (epsilon)
+
+---
 
 **Q4: In regression, the response variable is also called:**
+
 a) Independent variable
+
 b) Predictor variable
-c) Dependent variable
+
+**c) Dependent variable** ✅ (Target)
+
 d) Feature variable
-**Answer: c) Dependent variable** (Target)
+
+---
 
 **Q5: Which is best for forecasting sales trends over next quarter?**
+
 a) Classification
+
 b) Regression
-c) Time-series Analysis
+
+**c) Time-series Analysis** ✅
+
 d) Anomaly Detection
-**Answer: c) Time-series Analysis**
+
+---
 
 **Q6: Pooled data is a combination of:**
+
 a) Structured and unstructured data
-b) Time-series and cross-sectional data
+
+**b) Time-series and cross-sectional data** ✅
+
 c) Training and testing data
+
 d) Labeled and unlabeled data
-**Answer: b) Time-series and cross-sectional data**
+
+---
 
 **Q7: Algorithm performs well on training but poorly on testing. This is:**
+
 a) Underfitting
-b) Overfitting
+
+**b) Overfitting** ✅
+
 c) Good fit
+
 d) Homoscedasticity
-**Answer: b) Overfitting**
+
+---
 
 **Q8: Which is NOT a metric for classification?**
+
 a) Accuracy
+
 b) Precision
+
 c) Recall
-d) RMSE
-**Answer: d) RMSE** (RMSE is for regression!)
+
+**d) RMSE** ✅ (RMSE is for regression!)
+
+---
 
 **Q9: What is another name for data mining?**
+
 a) Data Cleaning
-b) Knowledge Discovery in Database (KDD)
+
+**b) Knowledge Discovery in Database (KDD)** ✅
+
 c) Data Transformation
+
 d) Data Warehousing
-**Answer: b) Knowledge Discovery in Database (KDD)**
+
+---
 
 **Q10: In graph analytics, what represents objects to be tracked?**
+
 a) Edges
+
 b) Paths
-c) Nodes (Vertices)
+
+**c) Nodes (Vertices)** ✅
+
 d) Weights
-**Answer: c) Nodes (Vertices)**
 `

@@ -326,73 +326,123 @@ Time-series or IoT data?
 
 ### Practice Questions - Module 1
 
+---
+
 **Q1: Which of the following is the standard language for querying relational databases?**
+
 a) Python
-b) SQL
+
+**b) SQL** ✅
+
 c) NoSQL
+
 d) GraphQL
-**Answer: b) SQL**
+
+---
 
 **Q2: What does CAP stand for in the CAP theorem?**
+
 a) Consistency, Attention, Partition
+
 b) Consistency, Availability, Petition
-c) Consistency, Availability, Partition tolerance
+
+**c) Consistency, Availability, Partition tolerance** ✅
+
 d) Consistency, Allocation, Partition tolerance
-**Answer: c) Consistency, Availability, Partition tolerance**
+
+---
 
 **Q3: Which of the following is NOT an example of NoSQL database?**
+
 a) MongoDB
+
 b) Cassandra
-c) MS-SQL Server
+
+**c) MS-SQL Server** ✅ (It's SQL, not NoSQL)
+
 d) Redis
-**Answer: c) MS-SQL Server** (It's SQL, not NoSQL)
+
+---
 
 **Q4: Which type of NoSQL database is MongoDB?**
+
 a) Key-Value Store
-b) Document Store
+
+**b) Document Store** ✅
+
 c) Column-Family
+
 d) Graph Database
-**Answer: b) Document Store**
+
+---
 
 **Q5: In graph databases, what represents the relationships between entities?**
+
 a) Nodes
-b) Edges
+
+**b) Edges** ✅ (Also called relationships or arcs)
+
 c) Properties
+
 d) Vertices
-**Answer: b) Edges** (Also called relationships or arcs)
+
+---
 
 **Q6: Which database is best suited for social network analysis?**
+
 a) MySQL
+
 b) Redis
-c) Neo4j
+
+**c) Neo4j** ✅ (Graph database)
+
 d) MongoDB
-**Answer: c) Neo4j** (Graph database)
+
+---
 
 **Q7: Which SQL database characteristic ensures data integrity?**
+
 a) Dynamic schema
-b) ACID compliance
+
+**b) ACID compliance** ✅
+
 c) Horizontal scaling
+
 d) Document storage
-**Answer: b) ACID compliance**
+
+---
 
 **Q8: What is the maximum storage capacity that MongoDB can auto-scale to?**
+
 a) 64 TiB
-b) 128 TiB
+
+**b) 128 TiB** ✅
+
 c) 256 TiB
+
 d) 512 TiB
-**Answer: b) 128 TiB**
+
+---
 
 **Q9: Which NoSQL database is designed for in-memory caching?**
+
 a) MongoDB
+
 b) Neo4j
-c) Redis
+
+**c) Redis** ✅
+
 d) Cassandra
-**Answer: c) Redis**
+
+---
 
 **Q10: According to CAP theorem, which property must NoSQL databases typically sacrifice?**
-a) Consistency OR Availability (must choose one)
+
+**a) Consistency OR Availability (must choose one)** ✅ (Since partition tolerance is essential for distributed systems)
+
 b) Partition tolerance
+
 c) All three
+
 d) None
-**Answer: a)** Since partition tolerance is essential for distributed systems, must choose between C or A.
 `

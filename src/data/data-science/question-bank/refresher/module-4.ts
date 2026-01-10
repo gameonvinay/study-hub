@@ -559,74 +559,123 @@ IF user asks "price" AND product="laptop" THEN fetch laptop price
 
 ### Practice Questions - Module 4
 
+---
+
 **Q1: Which reasoning type works from general to specific?**
+
 a) Inductive
-b) Deductive
+
+**b) Deductive** ✅
+
 c) Abductive
+
 d) Common Sense
-**Answer: b) Deductive**
+
+---
 
 **Q2: Example: "All pigeons in zoo are white → All pigeons are white" is:**
+
 a) Deductive reasoning
-b) Inductive reasoning
+
+**b) Inductive reasoning** ✅ (Specific observations → General conclusion)
+
 c) Abductive reasoning
+
 d) Common Sense
-**Answer: b) Inductive reasoning** (Specific observations → General conclusion)
+
+---
 
 **Q3: Example: "Wet ground → Probably rained" is:**
+
 a) Deductive
+
 b) Inductive
-c) Abductive
+
+**c) Abductive** ✅ (Best explanation for observation)
+
 d) Common Sense
-**Answer: c) Abductive** (Best explanation for observation)
+
+---
 
 **Q4: Which reasoning is based on informal experience and judgment?**
+
 a) Deductive
+
 b) Inductive
+
 c) Abductive
-d) Common Sense
-**Answer: d) Common Sense**
+
+**d) Common Sense** ✅
+
+---
 
 **Q5: Fuzzy logic handles:**
+
 a) Only binary values (0,1)
-b) Intermediate values between YES and NO
+
+**b) Intermediate values between YES and NO** ✅
+
 c) Text data
+
 d) Images
-**Answer: b) Intermediate values between YES and NO**
+
+---
 
 **Q6: Which is NOT a component of Fuzzy Inference System?**
+
 a) Rule Base
+
 b) Inference Engine
+
 c) Fuzzification Interface
-d) Decision Tree
-**Answer: d) Decision Tree** (Not part of FIS!)
+
+**d) Decision Tree** ✅ (Not part of FIS!)
+
+---
 
 **Q7: A set without crisp, clearly defined boundary is called:**
+
 a) Classical set
+
 b) Binary set
-c) Fuzzy set
+
+**c) Fuzzy set** ✅
+
 d) Null set
-**Answer: c) Fuzzy set**
+
+---
 
 **Q8: Which chatbot creates conversational flows using if/then logic?**
+
 a) Menu-based
+
 b) Keyword recognition
-c) Linguistic Based (Rule-Based)
+
+**c) Linguistic Based (Rule-Based)** ✅
+
 d) None
-**Answer: c) Linguistic Based (Rule-Based)**
+
+---
 
 **Q9: Keyword recognition-based chatbots:**
-a) Work well with many similar questions ✓
+
+**a) Work well with many similar questions** ✅ (TRICK QUESTION! Exam says they "work well when they have to answer a lot of similar questions")
+
 b) Fall short with many similar questions
+
 c) Don't use AI
+
 d) Can't recognize keywords
-**Answer: a) Work well with many similar questions** (TRICK QUESTION!)
-(Exam says they "work well when they have to answer a lot of similar questions")
+
+---
 
 **Q10: XYZ helps add convenience for customers in messaging apps. What is XYZ?**
+
 a) Topic Modeling
+
 b) Sentiment Analysis
-c) Chatbot
+
+**c) Chatbot** ✅
+
 d) Fuzzy Logic
-**Answer: c) Chatbot**
 `

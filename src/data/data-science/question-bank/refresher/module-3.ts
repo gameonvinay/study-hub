@@ -429,73 +429,123 @@ Classification based on data context such as location, application, creator, and
 
 ### Practice Questions - Module 3
 
+---
+
 **Q1: Which technique analyzes incoming messages to determine sentiment?**
+
 a) Topic Modelling
+
 b) Text Summarization
+
 c) Fuzzy Logic
-d) Sentiment Analysis
-**Answer: d) Sentiment Analysis**
+
+**d) Sentiment Analysis** ✅
+
+---
 
 **Q2: Which NLP technique produces a concise summary while preserving key information?**
+
 a) Topic Modelling
-b) Text Summarization
+
+**b) Text Summarization** ✅
+
 c) Fuzzy Logic
+
 d) Sentiment Analysis
-**Answer: b) Text Summarization**
+
+---
 
 **Q3: What is the full form of LDA in context with Topic Modelling?**
-a) Latent Dirichlet Allocation
+
+**a) Latent Dirichlet Allocation** ✅
+
 b) Latest Dirichlet Allocation
+
 c) Latest Direction Allocation
+
 d) Latent Direction Allocation
-**Answer: a) Latent Dirichlet Allocation**
+
+---
 
 **Q4: Which type of summarization generates new sentences?**
+
 a) Extractive
-b) Abstractive
+
+**b) Abstractive** ✅
+
 c) Both
+
 d) None
-**Answer: b) Abstractive**
+
+---
 
 **Q5: Which classification focuses on file content for categorization?**
+
 a) User-based
+
 b) Context-based
-c) Content-based
+
+**c) Content-based** ✅
+
 d) None
-**Answer: c) Content-based**
+
+---
 
 **Q6: Which classification relies on user's knowledge of document sensitivity?**
+
 a) Content-based
-b) User-based
+
+**b) User-based** ✅
+
 c) Context-based
+
 d) File-based
-**Answer: b) User-based**
+
+---
 
 **Q7: Which focuses on location, application, and creator metadata?**
+
 a) Content-based classification
+
 b) User-based classification
-c) Context-based classification
+
+**c) Context-based classification** ✅
+
 d) Sentiment analysis
-**Answer: c) Context-based classification**
+
+---
 
 **Q8: Extractive summarization is like:**
+
 a) Writing a summary in your own words
-b) Highlighting key sentences
+
+**b) Highlighting key sentences** ✅
+
 c) Translating to another language
+
 d) Detecting sentiment
-**Answer: b) Highlighting key sentences**
+
+---
 
 **Q9: What does sentiment analysis determine?**
+
 a) Summary of text
+
 b) Topics in document
-c) Emotional tone (positive/negative/neutral)
+
+**c) Emotional tone (positive/negative/neutral)** ✅
+
 d) Grammar errors
-**Answer: c) Emotional tone (positive/negative/neutral)**
+
+---
 
 **Q10: LDA is used for:**
+
 a) Sentiment detection
+
 b) Text translation
-c) Topic modeling (discovering hidden topics)
+
+**c) Topic modeling (discovering hidden topics)** ✅
+
 d) Grammar checking
-**Answer: c) Topic modeling (discovering hidden topics)**
 `
