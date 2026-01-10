@@ -22,7 +22,13 @@ import {
   module2 as dsModule2,
   module3 as dsModule3,
   module4 as dsModule4,
-  module5 as dsModule5
+  module5 as dsModule5,
+  module6 as dsModule6,
+  module7 as dsModule7,
+  module8 as dsModule8,
+  module9 as dsModule9,
+  module10 as dsModule10,
+  module11 as dsModule11
 } from './data-science/question-bank/refresher'
 
 export interface RefresherSubject {
@@ -112,6 +118,12 @@ A comprehensive quick revision guide covering all high-yield topics for acing yo
 - Module 3: NLP & Text Analytics (Sentiment Analysis, Text Summarization, LDA)
 - Module 4: AI & Chatbots (AI Reasoning Types, Fuzzy Logic, Chatbot Types)
 - Module 5: ML Fundamentals (Classification, Regression, Predictive Analytics)
+- Module 6: Recommender Systems (Collaborative Filtering, Content-Based, NMF)
+- Module 7: Anomaly Detection (Z-score, IQR, Outlier Detection Methods)
+- Module 8: Big Data & Hadoop Ecosystem (HDFS, Hive, HBase, Spark, Storm)
+- Module 9: Advanced NLP (Lemmatization, NER, ROUGE, BLEU, spaCy vs NLTK)
+- Module 10: Data Science Fundamentals (Methodology, Analytics Types, BI vs DS)
+- Module 11: Data Science Tools (Scikit-learn, TensorFlow, Plotly, Tableau, R)
 
 ---
 
@@ -132,6 +144,30 @@ ${dsModule4}
 ---
 
 ${dsModule5}
+
+---
+
+${dsModule6}
+
+---
+
+${dsModule7}
+
+---
+
+${dsModule8}
+
+---
+
+${dsModule9}
+
+---
+
+${dsModule10}
+
+---
+
+${dsModule11}
 `
 
 export const refresherSubjects: RefresherSubject[] = [
