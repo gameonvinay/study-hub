@@ -797,4 +797,3 @@ c) Scikit-learn
 
 d) SciPy
 `
-</invoke>

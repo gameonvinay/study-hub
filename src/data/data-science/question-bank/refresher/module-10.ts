@@ -843,4 +843,3 @@ c) They are the same thing
 
 d) Descriptive statistics use visualization, while inferential statistics use numbers
 `
-</invoke>

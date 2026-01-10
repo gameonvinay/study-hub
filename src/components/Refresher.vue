@@ -47,23 +47,22 @@ const md = new MarkdownIt({
   }
 })
 
-// Extract TOC from markdown (only h1 and h2, skip repetitive h3s)
+// Extract TOC from markdown (only Module headings)
 const toc = computed<TocItem[]>(() => {
   if (!subject.value) return []
-  const headingRegex = /^(#{1,2})\s+(.+)$/gm
+  const headingRegex = /^##\s+(Module\s+\d+[^#\n]*?)$/gm
   const items: TocItem[] = []
   let match
 
   while ((match = headingRegex.exec(subject.value.content)) !== null) {
-    if (!match[1] || !match[2]) continue
-    const level = match[1].length
-    const title = match[2].trim()
+    if (!match[1]) continue
+    const title = match[1].trim()
     const id = title
       .toLowerCase()
       .replace(/[^a-z0-9\s]/g, '')
       .replace(/\s+/g, '-')
 
-    items.push({ id, title, level })
+    items.push({ id, title, level: 2 })
   }
 
   return items
@@ -97,7 +96,30 @@ function scrollToSection(id: string) {
   activeSection.value = id
   const element = document.getElementById(id)
   if (element) {
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const targetPosition = element.offsetTop - 16 // 1rem offset from top
+    const startPosition = window.scrollY
+    const distance = targetPosition - startPosition
+    const duration = 200 // Fixed 200ms duration
+    let startTime: number | null = null
+
+    function animation(currentTime: number) {
+      if (startTime === null) startTime = currentTime
+      const timeElapsed = currentTime - startTime
+      const progress = Math.min(timeElapsed / duration, 1)
+
+      // Easing function for smooth animation (ease-in-out)
+      const ease = progress < 0.5
+        ? 2 * progress * progress
+        : 1 - Math.pow(-2 * progress + 2, 2) / 2
+
+      window.scrollTo(0, startPosition + distance * ease)
+
+      if (progress < 1) {
+        requestAnimationFrame(animation)
+      }
+    }
+
+    requestAnimationFrame(animation)
   }
 }
 

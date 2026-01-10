@@ -697,7 +697,7 @@ df.select("name").show()
 
 **Concept**: If A is a subtype of B, then Container[A] is a subtype of Container[B].
 
-**Notation**: `+T` (plus sign indicates covariance)
+**Notation**: \`+T\` (plus sign indicates covariance)
 
 **Example:**
 \`\`\`scala
@@ -883,4 +883,3 @@ b) IBM
 
 d) Oracle
 `
-</invoke>

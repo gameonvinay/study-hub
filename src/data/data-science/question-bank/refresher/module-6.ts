@@ -691,4 +691,3 @@ c) Content-Based
 
 d) Demographic filtering
 `
-</invoke>
