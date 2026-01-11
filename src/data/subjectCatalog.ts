@@ -43,5 +43,16 @@ export const subjectCatalog: SubjectCatalog[] = [
       theory: false,
       mindmap: false
     }
+  },
+  {
+    id: 'business-english',
+    name: 'Business English',
+    description: 'Professional English communication for business contexts',
+    availableContent: {
+      mcq: true,
+      refresher: false,
+      theory: true,
+      mindmap: false
+    }
   }
 ]

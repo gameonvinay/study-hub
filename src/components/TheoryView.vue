@@ -182,8 +182,8 @@ onUnmounted(() => {
         >
           <div class="question-header">
             <span class="question-number">Q{{ question.id }}</span>
-            <span :class="['question-type', question.id <= 10 ? 'long-answer' : 'short-answer']">
-              {{ question.id <= 10 ? 'Long' : 'Short' }}
+            <span :class="['question-type', question.id === 11 ? 'long-answer' : 'short-answer']">
+              {{ question.id === 11 ? 'Long' : 'Short' }}
             </span>
           </div>
           <h3>{{ question.title }}</h3>

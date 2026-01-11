@@ -2,6 +2,7 @@ import type { Subject } from '../types'
 import * as dataScienceQuestions from './data-science/question-bank/mcq/index'
 import * as excelQuestions from './data-analysis-excel/question-bank/mcq/index'
 import * as cProgrammingQuestions from './programming-in-c/question-bank/mcq/index'
+import * as businessEnglishQuestions from './business-english/question-bank/mcq/index'
 
 // Combine all MCQ sets into single arrays
 const dataScienceMcqs = [
@@ -52,6 +53,15 @@ const programmingCMcqs = [
   ...cProgrammingQuestions.mcqSet7
 ]
 
+const businessEnglishMcqs = [
+  ...businessEnglishQuestions.mcqSet1,
+  ...businessEnglishQuestions.mcqSet2,
+  ...businessEnglishQuestions.mcqSet3,
+  ...businessEnglishQuestions.mcqSet4,
+  ...businessEnglishQuestions.mcqSet5,
+  ...businessEnglishQuestions.mcqSet6
+]
+
 export const subjects: Subject[] = [
   {
     id: 'data-analysis-excel',
@@ -67,5 +77,10 @@ export const subjects: Subject[] = [
     id: 'programming-in-c',
     name: 'Programming in C',
     questions: programmingCMcqs
+  },
+  {
+    id: 'business-english',
+    name: 'Business English',
+    questions: businessEnglishMcqs
   }
 ]

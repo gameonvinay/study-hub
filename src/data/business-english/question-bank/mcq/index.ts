@@ -1,0 +1,6 @@
+export { mcqSet1 } from './mcq-set-1'
+export { mcqSet2 } from './mcq-set-2'
+export { mcqSet3 } from './mcq-set-3'
+export { mcqSet4 } from './mcq-set-4'
+export { mcqSet5 } from './mcq-set-5'
+export { mcqSet6 } from './mcq-set-6'
