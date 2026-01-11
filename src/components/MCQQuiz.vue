@@ -195,7 +195,7 @@ function getOptionClass(index: number) {
           </button>
 
           <button
-            v-if="!showResult"
+            v-if="!showResult || (showResult && selectedAnswer !== currentQuestion?.correctAnswer)"
             class="skip-btn"
             @click="skipQuestion"
             :disabled="isLastQuestion"
