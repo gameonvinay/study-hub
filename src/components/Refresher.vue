@@ -151,15 +151,32 @@ function handleScroll() {
     scrollProgress.value = Math.round(progress)
   }
 
-  if (currentActive && currentActive !== activeSection.value) {
-    activeSection.value = currentActive
-    // Scroll active item into view in sidebar after Vue updates DOM
-    nextTick(() => {
-      const activeLink = document.querySelector('.toc-item.active')
-      if (activeLink) {
-        activeLink.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+  // Find the nearest Module heading if current heading is not in TOC
+  if (currentActive) {
+    const tocIds = toc.value.map(item => item.id)
+    let activeToHighlight = currentActive
+
+    // If current heading is not a Module heading, find the nearest Module heading before it
+    if (!tocIds.includes(currentActive)) {
+      for (let i = currentIndex; i >= 0; i--) {
+        const headingId = (headingsArray[i] as HTMLElement).id
+        if (tocIds.includes(headingId)) {
+          activeToHighlight = headingId
+          break
+        }
       }
-    })
+    }
+
+    if (activeToHighlight && activeToHighlight !== activeSection.value) {
+      activeSection.value = activeToHighlight
+      // Scroll active item into view in sidebar after Vue updates DOM
+      nextTick(() => {
+        const activeLink = document.querySelector('.toc-item.active')
+        if (activeLink) {
+          activeLink.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+        }
+      })
+    }
   }
 }
 
