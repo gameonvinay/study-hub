@@ -169,8 +169,10 @@ onUnmounted(() => {
   <div v-else class="theory-container">
     <!-- Question List -->
     <template v-if="!selectedQuestion">
-      <button class="back-btn" @click="goBack">← Back</button>
-      <h2>{{ subject.name }}</h2>
+      <div class="theory-header">
+        <button class="back-btn" @click="goBack">← Back</button>
+        <h2>{{ subject.name }}</h2>
+      </div>
       <p class="subtitle">Select a question to view the detailed answer</p>
 
       <div class="questions-grid">
@@ -193,10 +195,16 @@ onUnmounted(() => {
 
     <!-- Question Detail View -->
     <template v-else>
+      <!-- Mobile Header -->
+      <div class="mobile-nav">
+        <button class="back-btn" @click="goBackToQuestions">← Back</button>
+        <span class="mobile-title">Q{{ selectedQuestion.id }}</span>
+      </div>
+
       <div class="theory-layout">
         <!-- Sidebar -->
         <aside class="sidebar">
-          <button class="back-btn" @click="goBackToQuestions">Back to Questions</button>
+          <button class="back-btn desktop-only" @click="goBackToQuestions">Back to Questions</button>
           <h3 class="sidebar-title">Q{{ selectedQuestion.id }}</h3>
           <p class="sidebar-question">{{ selectedQuestion.title }}</p>
 
@@ -239,11 +247,11 @@ onUnmounted(() => {
 .back-btn {
   margin-bottom: 1rem;
   background: transparent;
-  border: 1px solid #666;
+  border: 1px solid var(--border-color);
 }
 
 .back-btn:hover {
-  background: #333;
+  background: var(--bg-hover);
 }
 
 h2 {
@@ -251,7 +259,7 @@ h2 {
 }
 
 .subtitle {
-  color: #888;
+  color: var(--text-secondary);
   margin-bottom: 2rem;
 }
 
@@ -264,15 +272,15 @@ h2 {
 .question-card {
   text-align: left;
   padding: 1.5rem;
-  background: #2a2a2a;
-  border: 2px solid #333;
+  background: var(--bg-card);
+  border: 2px solid var(--border-light);
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .question-card:hover {
-  border-color: #646cff;
+  border-color: var(--accent-color);
   transform: translateY(-2px);
 }
 
@@ -285,7 +293,7 @@ h2 {
 
 .question-number {
   display: inline-block;
-  background: #646cff;
+  background: var(--accent-color);
   color: #fff;
   padding: 0.2rem 0.5rem;
   border-radius: 4px;
@@ -332,28 +340,28 @@ h2 {
   height: calc(100vh - 2rem);
   overflow-y: auto;
   padding-right: 1rem;
-  border-right: 1px solid #333;
+  border-right: 1px solid var(--border-light);
 }
 
 .sidebar-title {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
-  color: #646cff;
+  color: var(--accent-color);
 }
 
 .sidebar-question {
   font-size: 0.9rem;
-  color: #888;
+  color: var(--text-secondary);
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid var(--border-color);
   line-height: 1.4;
 }
 
 .toc-label {
   font-size: 0.8rem;
   text-transform: uppercase;
-  color: #666;
+  color: var(--text-muted);
   margin-bottom: 0.5rem;
   letter-spacing: 0.05em;
 }
@@ -371,7 +379,7 @@ h2 {
 .toc-item a {
   display: block;
   padding: 0.4rem 0.75rem;
-  color: #888;
+  color: var(--text-secondary);
   text-decoration: none;
   border-radius: 4px;
   cursor: pointer;
@@ -380,14 +388,14 @@ h2 {
 }
 
 .toc-item a:hover {
-  color: #fff;
-  background: #2a2a2a;
+  color: var(--text-heading);
+  background: var(--bg-secondary);
 }
 
 .toc-item.active a {
-  color: #646cff;
-  background: #1a1a3a;
-  border-left: 2px solid #646cff;
+  color: var(--accent-color);
+  background: var(--accent-bg);
+  border-left: 2px solid var(--accent-color);
 }
 
 /* Content */
@@ -411,13 +419,13 @@ h2 {
 
 .markdown-content :deep(h1) {
   font-size: 1.8rem;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 0.5rem;
 }
 
 .markdown-content :deep(h2) {
   font-size: 1.4rem;
-  color: #646cff;
+  color: var(--accent-color);
 }
 
 .markdown-content :deep(h3) {
@@ -439,7 +447,8 @@ h2 {
 }
 
 .markdown-content :deep(code) {
-  background: #2a2a2a;
+  background: var(--bg-code);
+  color: var(--text-code);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
   font-family: 'Fira Code', 'Consolas', monospace;
@@ -447,16 +456,22 @@ h2 {
 }
 
 .markdown-content :deep(pre.hljs) {
-  background: #1a1a1a;
+  background: var(--bg-code-block);
   border-radius: 8px;
   padding: 1rem;
   overflow-x: auto;
   margin-bottom: 1rem;
+  color: var(--text-code);
 }
 
 .markdown-content :deep(pre.hljs code) {
   background: none;
   padding: 0;
+  color: var(--text-code);
+}
+
+.markdown-content :deep(pre.hljs code *) {
+  color: inherit !important;
 }
 
 .markdown-content :deep(table) {
@@ -467,36 +482,36 @@ h2 {
 
 .markdown-content :deep(th),
 .markdown-content :deep(td) {
-  border: 1px solid #444;
+  border: 1px solid var(--border-color);
   padding: 0.5rem 0.75rem;
   text-align: left;
 }
 
 .markdown-content :deep(th) {
-  background: #2a2a2a;
+  background: var(--bg-secondary);
 }
 
 .markdown-content :deep(blockquote) {
-  border-left: 4px solid #646cff;
+  border-left: 4px solid var(--accent-color);
   margin: 1rem 0;
   padding-left: 1rem;
-  color: #888;
+  color: var(--text-secondary);
 }
 
 .markdown-content :deep(hr) {
   border: none;
   height: 12px;
   background:
-    linear-gradient(to right, transparent, #646cff, transparent) 0 0,
-    linear-gradient(to right, transparent, #444, transparent) 0 50%,
-    linear-gradient(to right, transparent, #646cff, transparent) 0 100%;
+    linear-gradient(to right, transparent, var(--accent-color), transparent) 0 0,
+    linear-gradient(to right, transparent, var(--border-color), transparent) 0 50%,
+    linear-gradient(to right, transparent, var(--accent-color), transparent) 0 100%;
   background-size: 100% 3px;
   background-repeat: no-repeat;
   margin: 3rem 0;
 }
 
 .markdown-content :deep(strong) {
-  color: #ccc;
+  color: var(--text-strong);
 }
 
 /* Scroll Progress Indicator */
@@ -504,20 +519,87 @@ h2 {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  background: #2a2a2a;
-  border: 1px solid #444;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
   padding: 0.5rem 0.75rem;
   border-radius: 8px;
   font-size: 0.85rem;
-  color: #888;
+  color: var(--text-secondary);
   font-weight: 500;
   z-index: 100;
   min-width: 50px;
   text-align: center;
 }
 
+/* Mobile Nav - hidden on desktop */
+.mobile-nav {
+  display: none;
+}
+
+.mobile-title {
+  font-weight: 600;
+  color: var(--accent-color);
+}
+
+.desktop-only {
+  display: block;
+}
+
+.theory-header {
+  margin-bottom: 1rem;
+}
+
 /* Mobile */
 @media (max-width: 768px) {
+  .theory-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: sticky;
+    top: 0;
+    background: var(--bg-primary);
+    padding: 0.75rem 0;
+    z-index: 50;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .theory-header .back-btn {
+    margin-bottom: 0;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .theory-header h2 {
+    font-size: 1.1rem;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mobile-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: sticky;
+    top: 0;
+    background: var(--bg-primary);
+    padding: 0.75rem 0;
+    margin-bottom: 1rem;
+    z-index: 50;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .mobile-nav .back-btn {
+    margin-bottom: 0;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
   .theory-layout {
     flex-direction: column;
   }
@@ -526,91 +608,15 @@ h2 {
     width: 100%;
     position: relative;
     height: auto;
-    max-height: 200px;
+    max-height: 150px;
     border-right: none;
-    border-bottom: 1px solid #333;
+    border-bottom: 1px solid var(--border-light);
     padding-bottom: 1rem;
     margin-bottom: 1rem;
   }
 
   .questions-grid {
     grid-template-columns: 1fr;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  .question-card {
-    background: #f5f5f5;
-    border-color: #ddd;
-  }
-
-  .question-number {
-    background: #4338ca;
-  }
-
-  .question-type.long-answer {
-    background: #059669;
-  }
-
-  .question-type.short-answer {
-    background: #d97706;
-  }
-
-  .sidebar {
-    border-right-color: #ddd;
-  }
-
-  .sidebar-question {
-    border-bottom-color: #ddd;
-  }
-
-  .toc-item a:hover {
-    color: #000;
-    background: #f0f0f0;
-  }
-
-  .toc-item.active a {
-    background: #e8e8ff;
-  }
-
-  .markdown-content :deep(code) {
-    background: #f0f0f0;
-  }
-
-  .markdown-content :deep(pre.hljs) {
-    background: #f5f5f5;
-  }
-
-  .markdown-content :deep(th) {
-    background: #f0f0f0;
-  }
-
-  .markdown-content :deep(th),
-  .markdown-content :deep(td) {
-    border-color: #ddd;
-  }
-
-  .markdown-content :deep(hr) {
-    background:
-      linear-gradient(to right, transparent, #646cff, transparent) 0 0,
-      linear-gradient(to right, transparent, #ccc, transparent) 0 50%,
-      linear-gradient(to right, transparent, #646cff, transparent) 0 100%;
-    background-size: 100% 3px;
-    background-repeat: no-repeat;
-  }
-
-  .markdown-content :deep(strong) {
-    color: #000;
-  }
-
-  .back-btn:hover {
-    background: #eee;
-  }
-
-  .scroll-progress {
-    background: #f5f5f5;
-    border-color: #ddd;
-    color: #666;
   }
 }
 </style>

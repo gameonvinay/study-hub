@@ -27,6 +27,16 @@ function goBack() {
 
 const activeSection = ref('')
 const scrollProgress = ref(0)
+const searchQuery = ref('')
+const mobileMenuOpen = ref(false)
+
+function toggleMobileMenu() {
+  mobileMenuOpen.value = !mobileMenuOpen.value
+}
+
+function closeMobileMenu() {
+  mobileMenuOpen.value = false
+}
 
 const md = new MarkdownIt({
   html: true,
@@ -47,6 +57,22 @@ const md = new MarkdownIt({
   }
 })
 
+// Helper function to generate ID from title
+function generateId(title: string): string {
+  return title
+    .trim()
+    .toLowerCase()
+    // Decode common HTML entities first
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    // Remove non-alphanumeric (except spaces)
+    .replace(/[^a-z0-9\s]/g, '')
+    .replace(/\s+/g, '-')
+}
+
 // Extract TOC from markdown (only Module headings)
 const toc = computed<TocItem[]>(() => {
   if (!subject.value) return []
@@ -57,10 +83,7 @@ const toc = computed<TocItem[]>(() => {
   while ((match = headingRegex.exec(subject.value.content)) !== null) {
     if (!match[1]) continue
     const title = match[1].trim()
-    const id = title
-      .toLowerCase()
-      .replace(/[^a-z0-9\s]/g, '')
-      .replace(/\s+/g, '-')
+    const id = generateId(title)
 
     items.push({ id, title, level: 2 })
   }
@@ -68,59 +91,136 @@ const toc = computed<TocItem[]>(() => {
   return items
 })
 
+// Search results - find headings that match search query
+const searchResults = computed<Array<{ id: string; title: string; level: number }>>(() => {
+  if (!subject.value || !searchQuery.value.trim()) return []
+
+  const query = searchQuery.value.toLowerCase()
+  const headingRegex = /^(#{1,3})\s+(.+)$/gm
+  const results: Array<{ id: string; title: string; level: number }> = []
+  let match
+
+  while ((match = headingRegex.exec(subject.value.content)) !== null) {
+    if (!match[1] || !match[2]) continue
+    const title = match[2].trim()
+    const level = match[1].length
+
+    // Check if title contains search query
+    if (title.toLowerCase().includes(query)) {
+      const id = generateId(title)
+      results.push({ id, title, level })
+    }
+  }
+
+  return results
+})
+
 // Add IDs to headings in rendered content
 const renderedContent = computed(() => {
   if (!subject.value) return ''
   let content = subject.value.content
 
-  // Add IDs to headings
-  content = content.replace(/^(#{1,3})\s+(.+)$/gm, (_match, hashes, title) => {
-    const id = title
-      .trim()
-      .toLowerCase()
-      .replace(/[^a-z0-9\s]/g, '')
-      .replace(/\s+/g, '-')
-    return `${hashes} ${title} {#${id}}`
-  })
-
-  // Render with custom heading IDs
+  // Render markdown first
   let html = md.render(content)
 
-  // Convert {#id} syntax to actual IDs
-  html = html.replace(/<(h[1-3])>(.+?)\s*\{#([^}]+)\}<\/\1>/g, '<$1 id="$3">$2</$1>')
+  // Add IDs to h1, h2, h3 headings directly in HTML
+  // Match opening tag, capture everything until closing tag
+  html = html.replace(/<(h[1-3])>([\s\S]*?)<\/\1>/gi, (_match, tag, titleContent) => {
+    // Strip any HTML tags from title to generate clean ID
+    const cleanTitle = titleContent.replace(/<[^>]*>/g, '').trim()
+    const id = generateId(cleanTitle)
+    return `<${tag} id="${id}">${titleContent}</${tag}>`
+  })
+
+  // Highlight search matches if there's a query
+  // Only highlight text content, not inside HTML tags or attributes
+  if (searchQuery.value.trim()) {
+    const query = searchQuery.value.trim()
+    const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const regex = new RegExp(escapedQuery, 'gi')
+
+    // Split HTML into tags and text, only highlight in text parts
+    html = html.replace(/>([^<]+)</g, (_match, textContent) => {
+      const highlighted = textContent.replace(regex, '<mark class="search-highlight">$&</mark>')
+      return `>${highlighted}<`
+    })
+  }
 
   return html
 })
 
+// Custom smooth scroll with fixed 200ms duration
+function smoothScrollTo(targetY: number, duration: number = 200) {
+  const startY = window.pageYOffset
+  const difference = targetY - startY
+  const startTime = performance.now()
+
+  function step(currentTime: number) {
+    const elapsed = currentTime - startTime
+    const progress = Math.min(elapsed / duration, 1)
+
+    // Ease out cubic for smooth deceleration
+    const easeOut = 1 - Math.pow(1 - progress, 3)
+
+    window.scrollTo(0, startY + difference * easeOut)
+
+    if (progress < 1) {
+      requestAnimationFrame(step)
+    }
+  }
+
+  requestAnimationFrame(step)
+}
+
+// Smooth scroll element into view within container with fixed 200ms duration
+function smoothScrollIntoView(element: Element, duration: number = 200) {
+  const container = element.closest('.sidebar') as HTMLElement | null
+  if (!container) return
+
+  const containerRect = container.getBoundingClientRect()
+  const elementRect = element.getBoundingClientRect()
+
+  // Calculate offset needed to bring element into view
+  let scrollOffset = 0
+  if (elementRect.top < containerRect.top) {
+    scrollOffset = elementRect.top - containerRect.top - 10
+  } else if (elementRect.bottom > containerRect.bottom) {
+    scrollOffset = elementRect.bottom - containerRect.bottom + 10
+  } else {
+    return // Already in view
+  }
+
+  const scrollContainer = container // Capture for closure
+  const startScrollTop = scrollContainer.scrollTop
+  const targetScrollTop = startScrollTop + scrollOffset
+  const startTime = performance.now()
+
+  function step(currentTime: number) {
+    const elapsed = currentTime - startTime
+    const progress = Math.min(elapsed / duration, 1)
+    const easeOut = 1 - Math.pow(1 - progress, 3)
+
+    scrollContainer.scrollTop = startScrollTop + (targetScrollTop - startScrollTop) * easeOut
+
+    if (progress < 1) {
+      requestAnimationFrame(step)
+    }
+  }
+
+  requestAnimationFrame(step)
+}
+
 function scrollToSection(id: string) {
   activeSection.value = id
-  const element = document.getElementById(id)
-  if (element) {
-    const targetPosition = element.offsetTop - 16 // 1rem offset from top
-    const startPosition = window.scrollY
-    const distance = targetPosition - startPosition
-    const duration = 200 // Fixed 200ms duration
-    let startTime: number | null = null
 
-    function animation(currentTime: number) {
-      if (startTime === null) startTime = currentTime
-      const timeElapsed = currentTime - startTime
-      const progress = Math.min(timeElapsed / duration, 1)
-
-      // Easing function for smooth animation (ease-in-out)
-      const ease = progress < 0.5
-        ? 2 * progress * progress
-        : 1 - Math.pow(-2 * progress + 2, 2) / 2
-
-      window.scrollTo(0, startPosition + distance * ease)
-
-      if (progress < 1) {
-        requestAnimationFrame(animation)
-      }
+  nextTick(() => {
+    const element = document.getElementById(id)
+    if (element) {
+      const yOffset = -20
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset
+      smoothScrollTo(y, 200)
     }
-
-    requestAnimationFrame(animation)
-  }
+  })
 }
 
 function handleScroll() {
@@ -173,7 +273,7 @@ function handleScroll() {
       nextTick(() => {
         const activeLink = document.querySelector('.toc-item.active')
         if (activeLink) {
-          activeLink.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+          smoothScrollIntoView(activeLink, 200)
         }
       })
     }
@@ -202,31 +302,138 @@ onUnmounted(() => {
     <button class="back-btn" @click="goBack">Back to Subject</button>
   </div>
 
-  <div v-else class="refresher-layout">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <button class="back-btn" @click="goBack">← Back</button>
-      <h3 class="sidebar-title">{{ subject.name }}</h3>
+  <div v-else class="refresher-wrapper">
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+      <button class="back-btn" @click="goBack">←</button>
+      <div class="mobile-search">
+        <input
+          v-model="searchQuery"
+          type="text"
+          placeholder="Search..."
+          class="search-input"
+        />
+        <span v-if="searchQuery" class="search-clear" @click="searchQuery = ''">×</span>
+      </div>
+      <button class="hamburger-btn" @click="toggleMobileMenu">
+        <span class="hamburger-icon" :class="{ open: mobileMenuOpen }">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </div>
 
-      <nav class="toc">
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" :class="{ open: mobileMenuOpen }" @click="closeMobileMenu"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" :class="{ open: mobileMenuOpen }">
+      <div class="mobile-menu-header">
+        <h3>{{ subject.name }}</h3>
+        <button class="close-btn" @click="closeMobileMenu">×</button>
+      </div>
+
+      <!-- Search Input -->
+      <div class="search-box">
+        <input
+          v-model="searchQuery"
+          type="text"
+          placeholder="Search in content..."
+          class="search-input"
+        />
+        <span v-if="searchQuery" class="search-clear" @click="searchQuery = ''">×</span>
+      </div>
+
+      <!-- Show search results when searching -->
+      <nav v-if="searchQuery.trim()" class="toc search-results">
+        <p class="search-label">{{ searchResults.length }} result(s) found</p>
+        <ul v-if="searchResults.length > 0">
+          <li
+            v-for="item in searchResults"
+            :key="item.id"
+            :class="['toc-item', `level-${item.level}`, { active: activeSection === item.id }]"
+          >
+            <a @click.prevent="scrollToSection(item.id); closeMobileMenu()">
+              {{ item.title }}
+            </a>
+          </li>
+        </ul>
+        <p v-else class="no-results">No matches found</p>
+      </nav>
+
+      <!-- Show normal TOC when not searching -->
+      <nav v-else class="toc">
         <ul>
           <li
             v-for="item in toc"
             :key="item.id"
             :class="['toc-item', `level-${item.level}`, { active: activeSection === item.id }]"
           >
-            <a @click.prevent="scrollToSection(item.id)">
+            <a @click.prevent="scrollToSection(item.id); closeMobileMenu()">
               {{ item.title }}
             </a>
           </li>
         </ul>
       </nav>
-    </aside>
+    </div>
 
-    <!-- Content -->
-    <main class="content" ref="contentRef">
-      <div class="markdown-content" v-html="renderedContent"></div>
-    </main>
+    <div class="refresher-layout">
+      <!-- Sidebar (Desktop) -->
+      <aside class="sidebar">
+        <button class="back-btn" @click="goBack">← Back</button>
+
+        <!-- Search Input -->
+        <div class="search-box">
+          <input
+            v-model="searchQuery"
+            type="text"
+            placeholder="Search in content..."
+            class="search-input"
+          />
+          <span v-if="searchQuery" class="search-clear" @click="searchQuery = ''">×</span>
+        </div>
+
+        <h3 class="sidebar-title">{{ subject.name }}</h3>
+
+        <!-- Show search results when searching -->
+        <nav v-if="searchQuery.trim()" class="toc search-results">
+          <p class="search-label">{{ searchResults.length }} result(s) found</p>
+          <ul v-if="searchResults.length > 0">
+            <li
+              v-for="item in searchResults"
+              :key="item.id"
+              :class="['toc-item', `level-${item.level}`, { active: activeSection === item.id }]"
+            >
+              <a @click.prevent="scrollToSection(item.id)">
+                {{ item.title }}
+              </a>
+            </li>
+          </ul>
+          <p v-else class="no-results">No matches found</p>
+        </nav>
+
+        <!-- Show normal TOC when not searching -->
+        <nav v-else class="toc">
+          <ul>
+            <li
+              v-for="item in toc"
+              :key="item.id"
+              :class="['toc-item', `level-${item.level}`, { active: activeSection === item.id }]"
+            >
+              <a @click.prevent="scrollToSection(item.id)">
+                {{ item.title }}
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Content -->
+      <main class="content" ref="contentRef">
+        <div class="markdown-content" v-html="renderedContent"></div>
+      </main>
+    </div>
 
     <!-- Scroll Progress Indicator -->
     <div class="scroll-progress">
@@ -236,11 +443,20 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+.refresher-wrapper {
+  max-width: 1600px;
+  margin: 0 auto;
+  position: relative;
+}
+
 .refresher-layout {
   display: flex;
   gap: 2rem;
-  max-width: 1600px;
-  margin: 0 auto;
+}
+
+/* Ensure body doesn't clip fixed elements */
+:global(body) {
+  overflow-x: hidden;
 }
 
 /* Sidebar */
@@ -252,27 +468,85 @@ onUnmounted(() => {
   height: calc(100vh - 2rem);
   overflow-y: auto;
   padding-right: 1rem;
-  border-right: 1px solid #333;
+  border-right: 1px solid var(--border-light);
 }
 
 .back-btn {
   width: 100%;
   margin-bottom: 1rem;
   background: transparent;
-  border: 1px solid #666;
+  border: 1px solid var(--border-color);
   text-align: left;
 }
 
 .back-btn:hover {
-  background: #333;
+  background: var(--bg-hover);
 }
 
 .sidebar-title {
   font-size: 1rem;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #444;
-  color: #888;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+/* Search Box */
+.search-box {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.5rem 2rem 0.5rem 0.75rem;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  background: var(--bg-primary);
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-clear {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 0.25rem;
+  transition: color 0.2s;
+}
+
+.search-clear:hover {
+  color: var(--text-heading);
+}
+
+.search-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  padding: 0 0.75rem;
+}
+
+.no-results {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding: 0.5rem 0.75rem;
+  font-style: italic;
 }
 
 .toc ul {
@@ -288,7 +562,7 @@ onUnmounted(() => {
 .toc-item a {
   display: block;
   padding: 0.4rem 0.75rem;
-  color: #888;
+  color: var(--text-secondary);
   text-decoration: none;
   border-radius: 4px;
   cursor: pointer;
@@ -297,14 +571,14 @@ onUnmounted(() => {
 }
 
 .toc-item a:hover {
-  color: #fff;
-  background: #2a2a2a;
+  color: var(--text-heading);
+  background: var(--bg-secondary);
 }
 
 .toc-item.active a {
-  color: #646cff;
-  background: #1a1a3a;
-  border-left: 2px solid #646cff;
+  color: var(--accent-color);
+  background: var(--accent-bg);
+  border-left: 2px solid var(--accent-color);
 }
 
 .toc-item.level-1 a {
@@ -342,7 +616,7 @@ onUnmounted(() => {
 
 .markdown-content :deep(h1) {
   font-size: 1.8rem;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 0.5rem;
 }
 
@@ -369,7 +643,8 @@ onUnmounted(() => {
 }
 
 .markdown-content :deep(code) {
-  background: #2a2a2a;
+  background: var(--bg-code);
+  color: var(--text-code);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
   font-family: 'Fira Code', 'Consolas', monospace;
@@ -377,16 +652,22 @@ onUnmounted(() => {
 }
 
 .markdown-content :deep(pre.hljs) {
-  background: #1a1a1a;
+  background: var(--bg-code-block);
   border-radius: 8px;
   padding: 1rem;
   overflow-x: auto;
   margin-bottom: 1rem;
+  color: var(--text-code);
 }
 
 .markdown-content :deep(pre.hljs code) {
   background: none;
   padding: 0;
+  color: var(--text-code);
+}
+
+.markdown-content :deep(pre.hljs code *) {
+  color: inherit !important;
 }
 
 .markdown-content :deep(table) {
@@ -397,36 +678,44 @@ onUnmounted(() => {
 
 .markdown-content :deep(th),
 .markdown-content :deep(td) {
-  border: 1px solid #444;
+  border: 1px solid var(--border-color);
   padding: 0.5rem 0.75rem;
   text-align: left;
 }
 
 .markdown-content :deep(th) {
-  background: #2a2a2a;
+  background: var(--bg-secondary);
 }
 
 .markdown-content :deep(blockquote) {
-  border-left: 4px solid #646cff;
+  border-left: 4px solid var(--accent-color);
   margin: 1rem 0;
   padding-left: 1rem;
-  color: #888;
+  color: var(--text-secondary);
 }
 
 .markdown-content :deep(hr) {
   border: none;
   height: 12px;
   background:
-    linear-gradient(to right, transparent, #646cff, transparent) 0 0,
-    linear-gradient(to right, transparent, #444, transparent) 0 50%,
-    linear-gradient(to right, transparent, #646cff, transparent) 0 100%;
+    linear-gradient(to right, transparent, var(--accent-color), transparent) 0 0,
+    linear-gradient(to right, transparent, var(--border-color), transparent) 0 50%,
+    linear-gradient(to right, transparent, var(--accent-color), transparent) 0 100%;
   background-size: 100% 3px;
   background-repeat: no-repeat;
   margin: 4rem 0;
 }
 
 .markdown-content :deep(strong) {
-  color: #ccc;
+  color: var(--text-strong);
+}
+
+.markdown-content :deep(mark.search-highlight) {
+  background: var(--accent-color);
+  color: #fff;
+  padding: 0.1rem 0.2rem;
+  border-radius: 2px;
+  font-weight: 500;
 }
 
 /* Scroll Progress Indicator */
@@ -434,92 +723,244 @@ onUnmounted(() => {
   position: fixed;
   bottom: 2rem;
   right: 2rem;
-  background: #2a2a2a;
-  border: 1px solid #444;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
   padding: 0.5rem 0.75rem;
   border-radius: 8px;
   font-size: 0.85rem;
-  color: #888;
+  color: var(--text-secondary);
   font-weight: 500;
   z-index: 100;
   min-width: 50px;
   text-align: center;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-  .refresher-layout {
-    flex-direction: column;
-  }
-
-  .sidebar {
-    width: 100%;
-    position: relative;
-    height: auto;
-    max-height: 200px;
-    border-right: none;
-    border-bottom: 1px solid #333;
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
-  }
+/* Mobile Header - hidden on desktop */
+.mobile-header {
+  display: none;
 }
 
-@media (prefers-color-scheme: light) {
+.mobile-menu-overlay {
+  display: none;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .mobile-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    position: fixed;
+    top: 52px;
+    left: 0;
+    width: 100%;
+    max-width: 100vw;
+    background: var(--bg-primary);
+    padding: 0.75rem 1rem;
+    z-index: 9999;
+    border-bottom: 1px solid var(--border-light);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  .refresher-wrapper {
+    padding-top: 52px;
+  }
+
+  .mobile-header .back-btn {
+    margin: 0;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    width: auto;
+  }
+
+  .mobile-search {
+    flex: 1;
+    position: relative;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .mobile-search .search-input {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+  }
+
+  .mobile-search .search-clear {
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    cursor: pointer;
+  }
+
+  .hamburger-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    flex-shrink: 0;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .hamburger-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 18px;
+    height: 14px;
+  }
+
+  .hamburger-icon span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 1px;
+    transition: all 0.3s;
+  }
+
+  .hamburger-icon.open span:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+  }
+
+  .hamburger-icon.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger-icon.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+  }
+
+  .mobile-menu-overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 200;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+  }
+
+  .mobile-menu-overlay.open {
+    opacity: 1;
+    visibility: visible;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-secondary);
+    z-index: 300;
+    padding: 1rem;
+    box-sizing: border-box;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s, opacity 0.3s;
+  }
+
+  .mobile-menu .toc {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0 -1rem;
+    padding: 0 1rem;
+  }
+
+  .mobile-menu.open {
+    visibility: visible;
+    opacity: 1;
+    width: 100vw;
+  }
+
+  .mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .mobile-menu-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--accent-color);
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--text-primary);
+  }
+
+  .mobile-menu .search-box {
+    margin-bottom: 1rem;
+  }
+
+  .mobile-menu .toc-item a {
+    display: block;
+    padding: 0.6rem 0.75rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100vw - 3rem);
+  }
+
   .sidebar {
-    border-right-color: #ddd;
+    display: none;
   }
 
-  .sidebar-title {
-    border-bottom-color: #ddd;
-  }
-
-  .toc-item a:hover {
-    color: #000;
-    background: #f0f0f0;
-  }
-
-  .toc-item.active a {
-    background: #e8e8ff;
-  }
-
-  .markdown-content :deep(code) {
-    background: #f0f0f0;
-  }
-
-  .markdown-content :deep(pre.hljs) {
-    background: #f5f5f5;
-  }
-
-  .markdown-content :deep(th) {
-    background: #f0f0f0;
-  }
-
-  .markdown-content :deep(th),
-  .markdown-content :deep(td) {
-    border-color: #ddd;
-  }
-
-  .markdown-content :deep(hr) {
-    background:
-      linear-gradient(to right, transparent, #646cff, transparent) 0 0,
-      linear-gradient(to right, transparent, #ccc, transparent) 0 50%,
-      linear-gradient(to right, transparent, #646cff, transparent) 0 100%;
-    background-size: 100% 3px;
-    background-repeat: no-repeat;
-  }
-
-  .markdown-content :deep(strong) {
-    color: #000;
-  }
-
-  .back-btn:hover {
-    background: #eee;
-  }
-
-  .scroll-progress {
-    background: #f5f5f5;
-    border-color: #ddd;
-    color: #666;
+  .refresher-layout {
+    flex-direction: column;
   }
 }
 </style>

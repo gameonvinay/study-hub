@@ -137,7 +137,7 @@ const getContentBadges = (subject: typeof subjectCatalog[0]) => {
 }
 
 .subtitle {
-  color: #888;
+  color: var(--text-secondary);
   margin: 0;
   font-size: 1.1rem;
 }
@@ -151,8 +151,8 @@ const getContentBadges = (subject: typeof subjectCatalog[0]) => {
 .subject-card {
   text-align: left;
   padding: 2rem;
-  background: #2a2a2a;
-  border: 2px solid #333;
+  background: var(--bg-card);
+  border: 2px solid var(--border-light);
   border-radius: 16px;
   cursor: pointer;
   transition: all 0.3s;
@@ -162,20 +162,21 @@ const getContentBadges = (subject: typeof subjectCatalog[0]) => {
 }
 
 .subject-card:hover {
-  border-color: #555;
+  border-color: var(--border-color);
   transform: translateY(-2px);
-  background: #333;
+  background: var(--bg-hover);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .subject-card h3 {
   margin: 0 0 0.75rem 0;
   font-size: 1.4rem;
-  color: #fff;
+  color: var(--text-heading);
 }
 
 .description {
   margin: 0 0 1.25rem 0;
-  color: #888;
+  color: var(--text-secondary);
   font-size: 0.95rem;
   line-height: 1.5;
 }
@@ -191,33 +192,13 @@ const getContentBadges = (subject: typeof subjectCatalog[0]) => {
   align-items: center;
   gap: 0.35rem;
   padding: 0.35rem 0.75rem;
-  background: rgba(100, 108, 255, 0.15);
-  color: #646cff;
+  background: var(--accent-bg-light);
+  color: var(--accent-color);
   border-radius: 6px;
   font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-}
-
-
-@media (prefers-color-scheme: light) {
-  .subject-card {
-    background: #f5f5f5;
-    border-color: #ddd;
-  }
-
-  .subject-card h3 {
-    color: #213547;
-  }
-
-  .subject-card:hover {
-    box-shadow: 0 8px 24px rgba(100, 108, 255, 0.15);
-  }
-
-  .badge {
-    background: rgba(100, 108, 255, 0.1);
-  }
 }
 
 @media (max-width: 768px) {

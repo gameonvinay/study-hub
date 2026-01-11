@@ -144,12 +144,23 @@ function getOptionClass(index: number) {
     <button class="back-btn" @click="goBack">Back to Subject</button>
   </div>
 
-  <div v-else class="quiz-container">
-    <button class="back-btn" @click="goBack">← Back</button>
+  <div v-else class="quiz-wrapper">
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+      <button class="back-btn" @click="goBack">← Back</button>
+      <div class="mobile-progress" v-if="totalQuestions > 0">
+        {{ currentIndex + 1 }}/{{ totalQuestions }}
+      </div>
+    </div>
 
-    <h2>{{ subject.name }}</h2>
+    <div class="quiz-container">
+      <!-- Desktop Header -->
+      <div class="quiz-header">
+        <button class="back-btn" @click="goBack">← Back</button>
+        <h2>{{ subject.name }}</h2>
+      </div>
 
-    <div v-if="totalQuestions === 0" class="no-questions">
+      <div v-if="totalQuestions === 0" class="no-questions">
       No questions available for this subject yet.
     </div>
 
@@ -226,48 +237,61 @@ function getOptionClass(index: number) {
         <button class="restart-btn" @click="restart">Restart Quiz</button>
       </div>
     </template>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.quiz-container {
+.quiz-wrapper {
   max-width: 700px;
   margin: 0 auto;
+}
+
+.quiz-container {
+  width: 100%;
+}
+
+.mobile-header {
+  display: none;
+}
+
+.quiz-header {
+  margin-bottom: 1rem;
 }
 
 .back-btn {
   margin-bottom: 1rem;
   background: transparent;
-  border: 1px solid #666;
+  border: 1px solid var(--border-color);
 }
 
 .back-btn:hover {
-  background: #333;
+  background: var(--bg-hover);
 }
 
 h2 {
-  margin-bottom: 1rem;
+  margin: 0;
 }
 
 .no-questions {
   padding: 2rem;
   text-align: center;
-  color: #888;
+  color: var(--text-secondary);
 }
 
 .progress {
   display: flex;
   justify-content: space-between;
   margin-bottom: 1rem;
-  color: #888;
+  color: var(--text-secondary);
 }
 
 .score {
-  color: #4caf50;
+  color: var(--success-color);
 }
 
 .question-card {
-  background: #2a2a2a;
+  background: var(--bg-card);
   border-radius: 12px;
   padding: 1.5rem;
 }
@@ -287,36 +311,36 @@ h2 {
 .option {
   text-align: left;
   padding: 1rem;
-  background: #1a1a1a;
-  border: 2px solid #333;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-light);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
 }
 
 .option:hover:not(.correct):not(.incorrect) {
-  border-color: #646cff;
+  border-color: var(--accent-color);
 }
 
 .option.selected {
-  border-color: #646cff;
-  background: #1a1a3a;
+  border-color: var(--accent-color);
+  background: var(--accent-bg);
 }
 
 .option.correct {
-  border-color: #4caf50;
-  background: #1a3a1a;
+  border-color: var(--success-color);
+  background: var(--success-bg);
 }
 
 .option.incorrect {
-  border-color: #f44336;
-  background: #3a1a1a;
+  border-color: var(--error-color);
+  background: var(--error-bg);
 }
 
 .option-letter {
   font-weight: bold;
   margin-right: 0.5rem;
-  color: #888;
+  color: var(--text-secondary);
 }
 
 .actions {
@@ -332,11 +356,11 @@ h2 {
 
 .skip-btn {
   background: transparent;
-  border: 1px solid #666;
+  border: 1px solid var(--border-color);
 }
 
 .skip-btn:hover:not(:disabled) {
-  background: #333;
+  background: var(--bg-hover);
 }
 
 .skip-btn:disabled {
@@ -345,17 +369,17 @@ h2 {
 }
 
 .check-btn {
-  background: #646cff;
+  background: var(--accent-color);
   flex-grow: 1;
 }
 
 .check-btn:disabled {
-  background: #444;
+  background: var(--bg-tertiary);
   cursor: not-allowed;
 }
 
 .next-btn {
-  background: #4caf50;
+  background: var(--success-color);
   flex-grow: 1;
 }
 
@@ -367,45 +391,75 @@ h2 {
 .final-score {
   margin-top: 2rem;
   padding: 2rem;
-  background: #2a2a2a;
+  background: var(--bg-card);
   border-radius: 12px;
   text-align: center;
 }
 
 .final-score h3 {
-  color: #4caf50;
+  color: var(--success-color);
   margin-bottom: 1rem;
 }
 
 .restart-btn {
   margin-top: 1rem;
-  background: #646cff;
+  background: var(--accent-color);
 }
 
-@media (prefers-color-scheme: light) {
+/* Mobile */
+@media (max-width: 768px) {
+  .mobile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background: var(--bg-primary);
+    padding: 0.75rem 0;
+    margin-bottom: 1rem;
+    z-index: 100;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .mobile-header .back-btn {
+    margin-bottom: 0;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .mobile-progress {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    padding: 0.4rem 0.75rem;
+    background: var(--accent-bg);
+    border-radius: 6px;
+  }
+
+  .quiz-header {
+    display: none;
+  }
+
   .question-card {
-    background: #f5f5f5;
+    padding: 1rem;
+  }
+
+  .question-text {
+    font-size: 1rem;
   }
 
   .option {
-    background: #fff;
-    border-color: #ddd;
+    padding: 0.75rem;
+    font-size: 0.9rem;
   }
 
-  .option.selected {
-    background: #e8e8ff;
+  .actions {
+    flex-wrap: wrap;
   }
 
-  .option.correct {
-    background: #e8ffe8;
-  }
-
-  .option.incorrect {
-    background: #ffe8e8;
-  }
-
-  .final-score {
-    background: #f5f5f5;
+  .nav-btn, .check-btn, .next-btn, .skip-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
   }
 }
 </style>

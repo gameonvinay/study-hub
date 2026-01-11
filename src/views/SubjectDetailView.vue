@@ -102,11 +102,11 @@ const contentTypes = computed(() => {
 .error h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: #646cff;
+  color: var(--accent-color);
 }
 
 .error p {
-  color: #888;
+  color: var(--text-secondary);
   margin-bottom: 2rem;
 }
 
@@ -118,7 +118,7 @@ const contentTypes = computed(() => {
   display: inline-block;
   margin-bottom: 2rem;
   background: transparent;
-  border: 1px solid #666;
+  border: 1px solid var(--border-color);
   padding: 0.6em 1.2em;
   border-radius: 8px;
   text-decoration: none;
@@ -128,25 +128,25 @@ const contentTypes = computed(() => {
 }
 
 .back-btn:hover {
-  background: #333;
-  border-color: #646cff;
+  background: var(--bg-hover);
+  border-color: var(--accent-color);
 }
 
 .subject-header {
   margin-bottom: 3rem;
   padding-bottom: 2rem;
-  border-bottom: 2px solid #333;
+  border-bottom: 2px solid var(--border-light);
 }
 
 .subject-header h1 {
   font-size: 2.5rem;
   margin: 0 0 1rem 0;
-  color: #646cff;
+  color: var(--accent-color);
 }
 
 .description {
   font-size: 1.2rem;
-  color: #888;
+  color: var(--text-secondary);
   margin: 0;
 }
 
@@ -164,8 +164,8 @@ const contentTypes = computed(() => {
 .type-card {
   text-align: center;
   padding: 3rem 2rem;
-  background: #2a2a2a;
-  border: 2px solid #333;
+  background: var(--bg-card);
+  border: 2px solid var(--border-light);
   border-radius: 16px;
   cursor: pointer;
   transition: all 0.3s;
@@ -175,9 +175,9 @@ const contentTypes = computed(() => {
 }
 
 .type-card:hover {
-  border-color: #646cff;
+  border-color: var(--accent-color);
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(100, 108, 255, 0.2);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .icon {
@@ -188,12 +188,12 @@ const contentTypes = computed(() => {
 .type-card h3 {
   font-size: 1.5rem;
   margin: 0 0 1rem 0;
-  color: #fff;
+  color: var(--text-heading);
 }
 
 .type-card p {
   margin: 0;
-  color: #888;
+  color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -201,30 +201,7 @@ const contentTypes = computed(() => {
 .no-content {
   text-align: center;
   padding: 4rem 2rem;
-  color: #888;
-}
-
-@media (prefers-color-scheme: light) {
-  .subject-header {
-    border-bottom-color: #ddd;
-  }
-
-  .type-card {
-    background: #f5f5f5;
-    border-color: #ddd;
-  }
-
-  .type-card h3 {
-    color: #213547;
-  }
-
-  .type-card:hover {
-    box-shadow: 0 8px 24px rgba(100, 108, 255, 0.15);
-  }
-
-  .back-btn:hover {
-    background: #eee;
-  }
+  color: var(--text-secondary);
 }
 
 @media (max-width: 768px) {
